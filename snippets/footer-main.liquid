@@ -1,0 +1,69 @@
+<div class="main-block"
+style="background-image: url('{{ 'Gradient.jpg' | asset_url }}');"
+>
+  <div class="page" style="padding-top: 0 !important; padding-bottom: 0 !important;">
+    <div class="row">
+      <div class="info-footer col-lg-6 font-custom">
+        <h1>{{ settings.global_name  }}</h1>
+        <div class="circle-large"></div>
+        <ul class="social-menu list-inline">
+          {% if settings.footer_facebook_icon.size > 0 %}
+            <li class="list-inline-item"><a href="{{settings.footer_facebook_icon_link}}" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>
+          {% endif %}
+          
+          {% if settings.footer_twitter_icon.size > 0 %}
+            <li class="list-inline-item"><a href="{{settings.footer_twitter_icon_link}}" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>
+          {% endif %}
+
+          {% if settings.footer_instagram_icon.size > 0 %}
+            <li class="list-inline-item"><a href="{{settings.footer_instagram_icon_link}}" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>
+          {% endif %}
+
+          {% if settings.footer_pinterest_icon.size > 0 %}
+            <li class="list-inline-item"><a href="{{settings.footer_pinterest_icon_link}}" target="_blank" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+          {% endif %}
+
+        </ul>
+      </div>
+
+
+      <div class="newsletter col-lg-6 font-custom">
+        <h5 class="text-uppercase">{{settings.footer_newsletter_header_custom}}</h5>
+        <p>{{settings.footer_newsletter_text_custom}}</p>
+        <form action="#" id="newsletter-form">
+          <div class="form-group">
+            <input
+            style="border: 1px solid #0207aa; color: #0207aa;"
+            class="placeholder-style"
+            type="email" name="subscribermail" placeholder="Your Email Address">
+            <button type="submit"> <i style="color: #0207aa;" class="fa fa-paper-plane"></i></button>
+          </div>
+        </form>
+      </div>
+<!-- 
+      <div class="site-links col-lg-4 col-md-6">
+        <h5 class="text-uppercase">Links</h5>
+        <ul class="list-unstyled">
+          <li> <a href="#">Login</a></li>
+          <li> <a href="#">Register</a></li>
+          <li> <a href="#">Wishlist</a></li>
+          <li> <a href="#">Our Products</a></li>
+          <li> <a href="#">Checkout</a></li>
+        </ul>
+      </div> -->
+
+
+    </div>
+  </div>
+</div>
+
+<div class="copyrights">
+  <div class="page" style="padding-top: 0 !important; padding-bottom: 0 !important;">
+    <div class="row d-flex align-items-center">
+      <div class="text col-md-6 text-white">
+        <p>&copy; {{'now' | date: '%Y'}} <a href="/" target="_blank">{{shop.name}}</a> All rights reserved.</p>
+      </div>
+
+    </div>
+  </div>
+</div>

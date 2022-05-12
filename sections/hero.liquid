@@ -1,0 +1,53 @@
+<section class="grid-12 hero_2">
+  <!-- Hero Slider-->
+  <div class="hero__img_2">
+
+  </div>
+  <div class="hero__text">
+    <div class="hero__text-mw">
+      <h1>{{section.settings.heading-1}}</h1>
+      <h2>{{section.settings.heading-2}}</h2>
+      <div class="hero__btn">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <input
+            value="{{section.settings.cta}}"
+            style="white-space:nowrap;text-transform:uppercase"
+            type="submit" class="btn password-page__signup-form__submit" >
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+"name": "Hero Section",
+"settings": [
+{
+"id": "heading-1",
+"type": "text",
+"label": "Heading 1",
+"default": "British Equestrian Wear"
+},
+{
+"id": "heading-2",
+"type": "text",
+"label": "Heading 2",
+"default": "handmade & sustainable"
+},
+{
+"id": "cta",
+"type": "text",
+"label": "CTA Button",
+"default": "Shop Now"
+},
+{
+"id": "image",
+"type": "image_picker",
+"label": "Image"
+}
+]
+}
+{% endschema %}

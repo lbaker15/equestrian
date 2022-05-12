@@ -1,0 +1,58 @@
+<section style="padding: 0px;">
+    <div class="borders">
+    <div class="w-full grid grid-cols-10 my-container">
+        <div class="col-span-10 md:col-span-5 row-span-1 info-section md:pr-8">
+            <h1 class="pb-4 trigger-items">{{section.settings.header_text-2}}</h1>
+            <h3 class="trigger-items">{{section.settings.info_text-2}}</h3>
+        </div>
+        <div class="col-span-10 md:col-span-5 row-span-1 info-image">  
+            <div style="background-image: url({{ section.settings.info_image-2 | img_url: '900x500' }});"></div>
+        </div>
+    </div>
+    <div 
+    style="background-image: url('{{ 'Gradient3.jpg' | asset_url }}');" 
+    class="circle circ-rotate">
+      <svg viewBox="0 0 100 100" width="140" height="140">
+        <defs>
+          <path id="circle"
+            d="
+              M 50, 50
+              m -37, 0
+              a 37,37 0 1,1 74,0
+              a 37,37 0 1,1 -74,0"/>
+        </defs>
+        <text font-size="14">
+          <textPath xlink:href="#circle">
+            Carefully selected providers...
+            <!-- Full of high quality ingredients... -->
+          </textPath>
+        </text>
+      </svg>
+    </div>
+    </div>
+
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Info-2",
+        "settings": [
+            { 
+                "id": "info_image-2",
+                "type": "image_picker",
+                "label": "Image" 
+            },
+            { 
+                "id": "header_text-2",
+                "type": "text",
+                "label": "Header Text" 
+            },
+            { 
+                "id": "info_text-2",
+                "type": "text",
+                "label": "Text" 
+            }
+        ]
+    }
+{% endschema %}
