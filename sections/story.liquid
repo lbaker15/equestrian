@@ -1,0 +1,41 @@
+<section class="no-pad story__section">
+    <div class="story">
+        <div class="story__image"></div>
+        <div class="story__text">
+            <h1>{{section.settings.heading-1}}</h1>
+            <h2>{{section.settings.heading-2}}</h2>
+        </div>
+    </div>
+    <div class="story__btn">
+        {% render 'swipe-btn' %}
+    </div>
+</section>
+
+{% schema %}
+{
+"name": "story",
+"settings": [
+    {
+        "id": "heading-1",
+        "type": "text",
+        "label": "Heading 1",
+        "default": "Our Story"
+    },
+    {
+        "id": "heading-2",
+        "type": "text",
+        "label": "Heading 2",
+        "default": "Asur was born from the desire to have quality, ethical, 100% British made equestrian wear.  All of our clothing are batch made, limited edition pieces."
+    },
+    {
+        "id": "cta",
+        "type": "text",
+        "label": "CTA",
+        "default": "Find Out More"
+    }
+],
+"blocks": [ 
+
+]
+}
+{% endschema %}

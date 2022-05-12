@@ -1,0 +1,83 @@
+<section class="no-pad guarantees__section">
+    <div class="guarantees">
+        <h1>{{section.settings.heading-1}}</h1>
+        <div class="grid-12 guarantees__grid">
+            <!-- {% for block in section.blocks %}
+                
+                <div class="guarantees__item {% if forloop.last %} no-border {% endif %}">
+                    <img src="{{block.settings.icon}}" />
+                    <h3>{{block.settings.heading-1}}</h3>
+                </div>
+            {% endfor %} -->
+            <div class="guarantees__item">
+                <img src="" />
+                <h3>28 day returns</h3>
+            </div>
+            <div class="guarantees__item">
+                <img src="" />
+                <h3>28 day returns</h3>
+            </div>
+            <div class="guarantees__item">
+                <img src="" />
+                <h3>28 day returns</h3>
+            </div>
+            <div class="guarantees__item">
+                <img src="" />
+                <h3>28 day returns</h3>
+            </div>
+            <div class="guarantees__item">
+                <img src="" />
+                <h3>28 day returns</h3>
+            </div>
+            <div class="guarantees__item no-border">
+                <img src="" />
+                <h3>28 day returns</h3>
+            </div>
+
+            <div class="guarantees__btn">
+                <div class="guarantees__btn-inner">
+                    {% render 'swipe-btn' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+"name": "guarantees",
+"settings": [
+    {
+    "id": "heading-1",
+    "type": "text",
+    "label": "Heading 1",
+    "default": "Guarantees"
+    },
+    {
+    "id": "cta",
+    "type": "text",
+    "label": "CTA",
+    "default": "Find Out More"    
+    }
+],
+"blocks": [ 
+    {
+        "type": "item",
+        "name": "Item",
+        "limit": 6,
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "icon",
+                "label": "Icon"
+            },
+            {
+                "type": "text",
+                "id": "heading-1",
+                "label": "Heading 1"
+            }
+        ]
+    }
+]
+}
+{% endschema %}

@@ -1,0 +1,69 @@
+<section class="no-pad craftmanship__section">
+    <div class="craftmanship">
+        <h1>{{section.settings.heading-1}}</h1>
+        <h2>{{section.settings.heading-2}}</h2>
+        <div class="grid-12 craftmanship__grid">
+            {% for block in section.blocks %}
+                <div class="craftmanship__item">
+                    <img src="{{block.settings.icon}}" />
+                    <h3>{{block.settings.heading-1}}</h3>
+                    <h4>{{block.settings.heading-2}}</h4>
+                </div>
+            {% endfor %}
+            <div class="craftmanship__btn">
+                <div class="craftmanship__btn-inner">
+                    {% render 'swipe-btn' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+"name": "craftmanship",
+"settings": [
+    {
+    "id": "heading-1",
+    "type": "text",
+    "label": "Heading 1",
+    "default": "Quality Craftmanship"
+    },
+    {
+    "id": "heading-2",
+    "type": "text",
+    "label": "Heading 2",
+    "default": "Expertly handcrafted in the UK by master tailors.  Engineered to last the test of time and trend."
+    },
+    {
+    "id": "cta",
+    "type": "text",
+    "label": "CTA",
+    "default": "Find Out More"    
+    }
+],
+"blocks": [ 
+    {
+        "type": "item",
+        "name": "Item",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "icon",
+                "label": "Icon"
+            },
+            {
+                "type": "text",
+                "id": "heading-1",
+                "label": "Heading 1"
+            },
+            {
+                "type": "text",
+                "id": "heading-2",
+                "label": "Heading 2"
+            }
+        ]
+    }
+]
+}
+{% endschema %}
