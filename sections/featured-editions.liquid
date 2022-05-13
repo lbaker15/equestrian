@@ -1,39 +1,38 @@
 <section class="no-pad edition__section">
     <div class="grid-12 edition">
         <div class="edition__grid">
-        {% for block in section.blocks %}
-     
-        {% if forloop.index0 == 0 or forloop.index0 == 2 %}
-        {% assign size = 'edition__large' %}
-        {% else %}
-        {% assign size = 'edition__small' %}
-        {% endif %}
+            {% for block in section.blocks %}
+            {% if forloop.index0 == 0 or forloop.index0 == 2 %}
+            {% assign size = 'edition__large' %}
+            {% else %}
+            {% assign size = 'edition__small' %}
+            {% endif %}
             <div class="edition__item {{size}}">
-                <div class="img" style="background-image: url('{{block.settings.edition.image  | image_url }}');" ></div>
+                <div class="img" style="background-image: url('{{block.settings.edition.image  | image_url }}');"></div>
                 <div class="edition__item-title">
-                    {{block.settings.edition.title}}
+                    <a href="{{block.settings.edition.url}}"> {{block.settings.edition.title}} </a>
                 </div>
             </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 
 {% schema %}
-    {
-        "name": "editions",
-        "blocks": [
-            {
-                "name": "edition",
-                "type": "edition",
-                "settings": [
-                    {
-                        "type": "collection",
-                        "id": "edition",
-                        "label": "Edition"
-                    }
-                ]
-            }
-        ]
-    }
+{
+"name": "editions",
+"blocks": [
+{
+"name": "edition",
+"type": "edition",
+"settings": [
+{
+"type": "collection",
+"id": "edition",
+"label": "Edition"
+}
+]
+}
+]
+}
 {% endschema %}

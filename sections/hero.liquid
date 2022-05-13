@@ -1,14 +1,19 @@
+{% assign opacity = section.settings.image-overlay | divided_by: 10.0 %}
 <section class="grid-12 hero_2">
   <!-- Hero Slider-->
-  <div class="hero__img_2">
-
+  <div class="hero__img">
+    <div 
+    style="opacity: {{opacity}}"
+    class="hero__img_2">
+    </div>
+    <div style="background-image: url('{{section.settings.image}}');" class="hero__img-inner"></div>
   </div>
   <div class="hero__text">
     <div class="hero__text-mw">
       <h1>{{section.settings.heading-1}}</h1>
       <h2>{{section.settings.heading-2}}</h2>
       <div class="hero__btn">
-         {% render "swipe-btn" %}
+        {% render "swipe-btn" %}
       </div>
     </div>
   </div>
@@ -31,20 +36,20 @@
 "default": "handmade & sustainable"
 },
 {
-"id": "cta-text", 
-"type": "text", 
+"id": "cta-text",
+"type": "text",
 "label": "CTA Text",
 "default": "Shop Now"
 },
 {
 "id": "cta-background-color",
-"type": "color", 
+"type": "color",
 "label": "CTA Background Colour",
 "default": "#000"
 },
 {
 "id": "cta-border-color",
-"type": "color", 
+"type": "color",
 "label": "CTA Border Colour",
 "default": "#fff"
 },
@@ -52,6 +57,13 @@
 "id": "image",
 "type": "image_picker",
 "label": "Image"
+},
+{
+"id": "image-overlay",
+"type": "range",
+"min": 0, "max": 10,
+"default": 5,
+"label": "Image Overlay Opacity"
 }
 ]
 }

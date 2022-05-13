@@ -3,7 +3,14 @@
         <div class="instagram__icon"></div>
         <h1>{{section.settings.heading-1}}</h1>
         <h2>{{section.settings.heading-2}}</h2>
-        <div class="instagram__embed"></div>
+        <!-- <div class="instagram__embed"></div> -->
+        <div class="instagram__grid">
+            {% for image in section.blocks %}
+                <div class="instagram__item">
+                    <div style="background-image: url('{{image.settings.insta_image | image_url}}');"></div>
+                </div>
+            {% endfor %}
+        </div>
         <div class="instagram__btn">
             {% render "swipe-btn" %}
         </div>
@@ -40,10 +47,19 @@
 },
 {
 "id": "cta-text",
-"type": "text", 
+"type": "text",
 "label": "CTA Text",
 "default": "Join @ASUR_EQUESTRIAN"
 }
+],
+"blocks": [
+{"name": "instagram image", "type": "image_picker", "settings": [
+{
+"id": "insta_image",
+"type": "image_picker",
+"label": "Instagram Image"
+}
+]}
 ]
 }
 {% endschema %}

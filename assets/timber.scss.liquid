@@ -3482,6 +3482,7 @@ shopify-payment-terms {
 $sectionPaddingLarge: 50px;
 $sectionPaddingSmall: 25px;
 $desktopContainer: 1000px;
+$laptopContainer: 800px;
 
 #shopify-section-hero {
   padding: 0 !important;
@@ -3498,9 +3499,22 @@ $desktopContainer: 1000px;
   background: black;
   height: calc(100vh - 120px);
 }
-.hero__img_2 {
+.hero__img {
   grid-column: 1 / span 5;
-  background:red;
+  position: relative;
+}
+.hero__img_2 {
+  background:black;
+  opacity: 0.5;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.hero__img-inner {
+  width: 100%;
+  height: 100%;
+  background-size: cover; background-position: 50% 50%;
+  background: red;
 }
 .hero__text {
   grid-column: 6 / span 6;
@@ -3526,8 +3540,32 @@ $desktopContainer: 1000px;
 .hero__btn {
   margin-top: 20px;
 }
-
-
+@media (max-width: 768px) {
+  .hero__img {
+    grid-column: 1 / span 12;
+  }
+  .hero__text {
+    grid-column: 1 / span 12;
+    display: flex;
+    position: absolute;
+    align-items: flex-end;
+    padding-left: 1vw; padding-right: 1vw;
+    width: 100%;
+    height: 100vh;
+    padding-bottom: 7vh;
+  }
+  .hero_2 {
+    height: 100vh;
+  }
+}
+// 576px for portrait phones.
+// 768px for tablets.
+// 992px for laptops.
+// 1200px for large devices.
+$smallPhone: 576px;
+$phone: 768px;
+$tablet: 992px;
+$laptop: 1200px;
 
 .edition__section {
   padding: $sectionPaddingLarge 0px;
@@ -3577,8 +3615,51 @@ $desktopContainer: 1000px;
   z-index: 100;
   background: rgba(0,0,0,0.5);
 }
-
-
+.edition__item-title a {
+  color: white;
+}
+.edition__item-title a:hover {
+  color: #c3c3c3;
+}
+.edition__slide {
+  display: none;
+  width: 100%;
+}
+.edition__slide-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  width: auto;
+  height: auto;
+}
+@media (max-width: $laptop) {
+  .edition__grid {
+    width: $laptopContainer;
+  }
+}
+@media (max-width: $tablet) {
+  .edition {
+    overflow: hidden;
+  }
+  .edition__grid {
+    width: 90%;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+  }
+  .edition__item {
+    min-width: 300px;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+  .edition__grid::-webkit-scrollbar {
+    width: 5px;
+    background: rgba(0,0,0,0.1);
+  }
+  .edition__grid::-webkit-scrollbar-thumb {
+    background: black;
+    transform: rotate(-45deg);
+  }
+}
 
 $paddingTop: 40px;
 $height: 65px;
@@ -3742,6 +3823,8 @@ $parentWidth: 800px;
 .instagram h2 {
   color: white;
   margin-bottom: 40px;
+  width: 90%;
+  margin-left: auto; margin-right: auto;
 }
 .instagram__icon {
   background: red; border-radius: 50%;
@@ -3749,10 +3832,31 @@ $parentWidth: 800px;
   margin-bottom: 40px;
   margin-left: auto; margin-right: auto;
 }
-.instagram__embed {
-  width: 100%;
-  height: 1px;
-  background: black;
+// .instagram__embed {
+//   width: 100%;
+//   height: 1px;
+//   background: black;
+// }
+.instagram__grid {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  width: 90%; 
+  height: auto;
+  margin-left: auto; margin-right: auto;
+  gap: 10px;
+}
+$gap: 10px;
+$margin: 33px;
+.instagram__item {
+  width: ($desktopContainer / 3) - $gap - $margin;
+  grid-row: span 1;
+  grid-column: span 1; 
+  height: ($desktopContainer / 3) - $gap - $margin;
+}
+.instagram__item div {
+  background-size: cover; width: 100%; height: 100%;
+  background-position: 50% 50%;
 }
 .sw-instagram-container {
   margin: 0 auto;
@@ -3793,10 +3897,25 @@ $parentWidth: 800px;
 
 
 
+.header {
+  width: 100%; height: 80px;
+  display: flex; background: black;
+  justify-content: space-between;
+  color: white;
+}
+.header__menu {
+  width: 50px;
+}
+.header__logo {
+  width: 150px;
+}
+.header__cart {
+  width: 50px;
+}
+
 footer {
   background: black;
   padding: $sectionPaddingLarge;
-  margin-bottom: 400px;
 }
 .footer__inner {
   width: $desktopContainer;
@@ -3881,7 +4000,17 @@ $footerH: 45px;
   max-width: 300px;
   flex-wrap: wrap;
   margin-left: auto; margin-right: auto;
+  padding: 25px 0px;
 }
+.footer__copyright {
+  font-size: 14px; color: white;
+  text-align: center;
+}
+.main-content {
+  padding-bottom: 0px !important;
+}
+
+
 // .main-content {
 //   display: grid;
 //   grid-template-columns: 1fr;
