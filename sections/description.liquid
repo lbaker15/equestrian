@@ -1,0 +1,26 @@
+<section class="no-pad description__section">
+    <div class="description">
+        <h1>{{section.settings.heading-1}}</h1>
+        <h2>{{section.settings.heading-2}}</h2>
+    </div>
+</section>
+
+{% schema %}
+{
+"name": "description",
+"settings": [
+{
+"id": "heading-1",
+"type": "text",
+"label": "Heading 1",
+"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+},
+{
+"id": "heading-2",
+"type": "text",
+"label": "Heading 2",
+"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+}
+]
+}
+{% endschema %}

@@ -8,14 +8,7 @@
       <h1>{{section.settings.heading-1}}</h1>
       <h2>{{section.settings.heading-2}}</h2>
       <div class="hero__btn">
-        <div class="input-group">
-          <span class="input-group-btn">
-            <input
-            value="{{section.settings.cta}}"
-            style="white-space:nowrap;text-transform:uppercase"
-            type="submit" class="btn password-page__signup-form__submit" >
-          </span>
-        </div>
+         {% render "swipe-btn" %}
       </div>
     </div>
   </div>
@@ -38,10 +31,22 @@
 "default": "handmade & sustainable"
 },
 {
-"id": "cta",
-"type": "text",
-"label": "CTA Button",
+"id": "cta-text", 
+"type": "text", 
+"label": "CTA Text",
 "default": "Shop Now"
+},
+{
+"id": "cta-background-color",
+"type": "color", 
+"label": "CTA Background Colour",
+"default": "#000"
+},
+{
+"id": "cta-border-color",
+"type": "color", 
+"label": "CTA Border Colour",
+"default": "#fff"
 },
 {
 "id": "image",

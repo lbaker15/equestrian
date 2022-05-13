@@ -3,7 +3,8 @@
         <div class="story__image"></div>
         <div class="story__text">
             <h1>{{section.settings.heading-1}}</h1>
-            <h2>{{section.settings.heading-2}}</h2>
+            <h2>Asur was born from the desire to have quality, ethical, 100% British made equestrian wear. All of our
+                clothing are batch made, limited edition pieces.</h2>
         </div>
     </div>
     <div class="story__btn">
@@ -13,29 +14,32 @@
 
 {% schema %}
 {
-"name": "story",
-"settings": [
-    {
+    "name": "story",
+    "settings": [
+        {
         "id": "heading-1",
         "type": "text",
         "label": "Heading 1",
         "default": "Our Story"
-    },
-    {
-        "id": "heading-2",
+        }, 
+        { 
+        "id": "cta-background-color",
+        "type": "color",
+        "label": "CTA Background Colour",
+        "default": "#fff"
+        },
+        {
+        "id": "cta-border-color",
+        "type": "color",
+        "label": "CTA Border Colour",
+        "default": "#000"
+        },
+        {
+        "id": "cta-text",
         "type": "text",
-        "label": "Heading 2",
-        "default": "Asur was born from the desire to have quality, ethical, 100% British made equestrian wear.  All of our clothing are batch made, limited edition pieces."
-    },
-    {
-        "id": "cta",
-        "type": "text",
-        "label": "CTA",
+        "label": "CTA Text",
         "default": "Find Out More"
-    }
-],
-"blocks": [ 
-
-]
+        }  
+    ]
 }
 {% endschema %}

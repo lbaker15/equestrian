@@ -1,0 +1,49 @@
+<section class="no-pad instagram__section">
+    <div class="instagram">
+        <div class="instagram__icon"></div>
+        <h1>{{section.settings.heading-1}}</h1>
+        <h2>{{section.settings.heading-2}}</h2>
+        <div class="instagram__embed"></div>
+        <div class="instagram__btn">
+            {% render "swipe-btn" %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+"name": "instagram",
+"settings": [
+{
+"id": "heading-1",
+"type": "text",
+"label": "Heading 1",
+"default": "@Asur_equestrian"
+},
+{
+"id": "heading-2",
+"type": "text",
+"label": "Heading 2",
+"default": "Connect with us to see behind the scenes shots, our favourite influencers and much more."
+},
+{
+"id": "cta-background-color",
+"type": "color",
+"label": "CTA Background Colour",
+"default": "#000"
+},
+{
+"id": "cta-border-color",
+"type": "color",
+"label": "CTA Border Colour",
+"default": "#fff"
+},
+{
+"id": "cta-text",
+"type": "text", 
+"label": "CTA Text",
+"default": "Join @ASUR_EQUESTRIAN"
+}
+]
+}
+{% endschema %}

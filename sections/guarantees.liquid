@@ -47,37 +47,49 @@
 {
 "name": "guarantees",
 "settings": [
-    {
-    "id": "heading-1",
-    "type": "text",
-    "label": "Heading 1",
-    "default": "Guarantees"
-    },
-    {
-    "id": "cta",
-    "type": "text",
-    "label": "CTA",
-    "default": "Find Out More"    
-    }
+{
+"id": "heading-1",
+"type": "text",
+"label": "Heading 1",
+"default": "Guarantees"
+},
+{
+"id": "cta-background-color",
+"type": "color",
+"label": "CTA Background Colour",
+"default": "#fff"
+},
+{ 
+"id": "cta-border-color",
+"type": "color",
+"label": "CTA Border Colour",
+"default": "#000"
+},
+{
+"id": "cta-text",
+"type": "text",
+"label": "CTA Text",
+"default": "Find Out More"
+}
 ],
-"blocks": [ 
-    {
-        "type": "item",
-        "name": "Item",
-        "limit": 6,
-        "settings": [
-            {
-                "type": "image_picker",
-                "id": "icon",
-                "label": "Icon"
-            },
-            {
-                "type": "text",
-                "id": "heading-1",
-                "label": "Heading 1"
-            }
-        ]
-    }
+"blocks": [
+{
+"type": "item",
+"name": "Item",
+"limit": 6,
+"settings": [
+{
+"type": "image_picker",
+"id": "icon",
+"label": "Icon"
+},
+{
+"type": "text",
+"id": "heading-1",
+"label": "Heading 1"
+}
+]
+}
 ]
 }
 {% endschema %}
