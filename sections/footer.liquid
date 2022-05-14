@@ -1,6 +1,5 @@
 <footer>
   <div class="footer__inner">
-    <div class="footer__widgets">
       <div class="footer__news">
         <h2>Join Our Newsletter</h2>
         <div class="footer__news-flex">
@@ -20,7 +19,6 @@
           <a href="{{settings.social_facebook_link}}"><img src="" /></a>
           {% endif %}
         </div>
-      </div>
     </div>
     <div class="footer__links">
       {% assign size = linklists.footer.links.size %}
@@ -39,6 +37,7 @@
     </div>
   </div>
   <div class="footer__payment">
+    <h2>Payment Options</h2>
     {%- for type in shop.enabled_payment_types -%}
     <li>
       {{ type | payment_type_svg_tag: class: 'icon' }}

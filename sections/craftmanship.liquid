@@ -1,13 +1,13 @@
 <section class="no-pad craftmanship__section">
     <div class="craftmanship">
-        <h1>{{section.settings.heading-1}}</h1>
-        <h2>{{section.settings.heading-2}}</h2>
+        <h1 style="color: {{section.settings.text-color}}" >{{section.settings.heading-1}}</h1>
+        <h2 style="color: {{section.settings.text-color}}" >{{section.settings.heading-2}}</h2>
         <div class="grid-12 craftmanship__grid">
             {% for block in section.blocks %}
             <div class="craftmanship__item">
                 <img src="{{block.settings.icon}}" />
-                <h3>{{block.settings.heading-1}}</h3>
-                <h4>{{block.settings.heading-2}}</h4>
+                <h3 style="color: {{section.settings.text-color}}" >{{block.settings.heading-1}}</h3>
+                <h4 style="color: {{section.settings.text-color}}" >{{block.settings.heading-2}}</h4>
             </div>
             {% endfor %}
             <div class="craftmanship__btn">
@@ -36,12 +36,18 @@
 "default": "Expertly handcrafted in the UK by master tailors. Engineered to last the test of time and trend."
 },
 {
+"id": "text-color",
+"type": "color",
+"label": "Text Colour",
+"default": "#fff"
+},
+{
 "id": "cta-background-color",
 "type": "color",
 "label": "CTA Background Colour",
 "default": "#000"
 },
-{ 
+{
 "id": "cta-border-color",
 "type": "color",
 "label": "CTA Border Colour",

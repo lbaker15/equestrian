@@ -1,17 +1,26 @@
 {% assign opacity = section.settings.image-overlay | divided_by: 10.0 %}
+{% if section.settings.text-alignment == 'left' %}
+{% assign alignment = 'flex-start' %}
+{% elsif section.settings.text-alignment == 'center' %}
+{% assign alignment = 'center' %}
+{% else %}
+{% assign alignment = 'flex-end' %}
+{% endif %}
 <section class="grid-12 hero_2">
   <!-- Hero Slider-->
   <div class="hero__img">
-    <div 
-    style="opacity: {{opacity}}"
-    class="hero__img_2">
+    <div style="opacity: {{opacity}}" class="hero__img_2">
     </div>
     <div style="background-image: url('{{section.settings.image}}');" class="hero__img-inner"></div>
   </div>
-  <div class="hero__text">
-    <div class="hero__text-mw">
-      <h1>{{section.settings.heading-1}}</h1>
-      <h2>{{section.settings.heading-2}}</h2>
+  <div class="hero__text   hero__text-{{section.settings.text-position}}">
+    <div 
+    style="
+    padding: {{section.settings.text-margin}}px;
+    text-align: {{section.settings.text-alignment}}; align-items: {{alignment}}"
+    class="hero__text-mw">
+      <h1 style="color: {{section.settings.text-color}}">{{section.settings.heading-1}}</h1>
+      <h2 style="color: {{section.settings.text-color}}">{{section.settings.heading-2}}</h2>
       <div class="hero__btn">
         {% render "swipe-btn" %}
       </div>
@@ -64,6 +73,33 @@
 "min": 0, "max": 10,
 "default": 5,
 "label": "Image Overlay Opacity"
+},
+{
+"id": "text-position",
+"type": "radio",
+"options": [{"value": "left"}, {"value": "right"}],
+"label": "Text Container Position",
+"default": "right"
+},
+{
+"id": "text-color",
+"type": "color",
+"label": "Text Colour",
+"default": "#fff"
+},
+{
+"id": "text-alignment",
+"type": "radio",
+"options": [{"value": "left"}, {"value": "center"}, {"value": "right"}],
+"label": "Text Alignment",
+"default": "center"
+},
+{
+  "id": "text-margin",
+  "type": "range",
+  "min": 0, "max": 100,
+  "default": 40,
+  "label": "Text Container Padding" 
 }
 ]
 }
