@@ -19,8 +19,8 @@
     padding: {{section.settings.text-margin}}px;
     text-align: {{section.settings.text-alignment}}; align-items: {{alignment}}"
     class="hero__text-mw">
-      <h1 style="color: {{section.settings.text-color}}">{{section.settings.heading-1}}</h1>
-      <h2 style="color: {{section.settings.text-color}}">{{section.settings.heading-2}}</h2>
+      <h2 style="color: {{section.settings.text-color}}">{{section.settings.heading-1}}</h2>
+      <h3 style="color: {{section.settings.text-color}}">{{section.settings.heading-2}}</h3>
       <div class="hero__btn">
         {% render "swipe-btn" %}
       </div>
@@ -49,6 +49,12 @@
 "type": "text",
 "label": "CTA Text",
 "default": "Shop Now"
+},
+{
+"id": "cta-url",
+"type": "url",
+"label": "CTA Link",
+"default": "/"
 },
 {
 "id": "cta-background-color",

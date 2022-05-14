@@ -1,24 +1,24 @@
 <footer>
   <div class="footer__inner">
-      <div class="footer__news">
-        <h2>Join Our Newsletter</h2>
-        <div class="footer__news-flex">
-          <input class="input" />
-          <div class="news-btn">
-            {% render "swipe-btn" %}
-          </div>
+    <div class="footer__news">
+      <h2>Join Our Newsletter</h2>
+      <div class="footer__news-flex">
+        <input class="input" />
+        <div class="news-btn">
+          {% render "swipe-btn" %}
         </div>
       </div>
-      <div class="footer__social">
-        <h2>Follow Us</h2>
-        <div class="footer__social-flex">
-          {% if settings.social_instagram_link != blank %}
-          <a href="{{settings.social_instagram_link}}"><img src="" /></a>
-          {% endif %}
-          {% if settings.social_facebook_link != blank %}
-          <a href="{{settings.social_facebook_link}}"><img src="" /></a>
-          {% endif %}
-        </div>
+    </div>
+    <div class="footer__social">
+      <h2>Follow Us</h2>
+      <div class="footer__social-flex">
+        {% if settings.social_instagram_link != blank %}
+        <a href="{{settings.social_instagram_link}}"><img alt="Instagram logo" src="" /></a>
+        {% endif %}
+        {% if settings.social_facebook_link != blank %}
+        <a href="{{settings.social_facebook_link}}"><img alt="Facebook logo" src="" /></a>
+        {% endif %}
+      </div>
     </div>
     <div class="footer__links">
       {% assign size = linklists.footer.links.size %}
@@ -28,7 +28,7 @@
     ">
         <a href="{{link.url}}">
           {% if link.title == 'My Account' %}
-          <img class="footer__horse" src="" />
+          <img class="footer__horse" alt="My account icon" src="" />
           {% endif %}
           {{link.title}}
         </a>
@@ -42,7 +42,7 @@
     <li>
       {{ type | payment_type_svg_tag: class: 'icon' }}
     </li>
-  {%- endfor -%}
+    {%- endfor -%}
   </div>
   <div class="footer__copyright">
     © 2022 Asur Equestrian Ltd
@@ -66,12 +66,18 @@
 "type": "color",
 "label": "CTA Border Colour",
 "default": "#fff"
-}, 
-{ 
+},
+{
 "id": "cta-text",
 "type": "text",
 "label": "CTA Text",
 "default": ">"
+},
+{
+"id": "cta-url",
+"type": "url",
+"label": "CTA Link",
+"default": "/"
 }
 ]
 }

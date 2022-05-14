@@ -1,36 +1,36 @@
 <section class="no-pad guarantees__section">
     <div class="guarantees">
-        <h1>{{section.settings.heading-1}}</h1>
+        <h2>{{section.settings.heading-1}}</h2>
         <div class="grid-12 guarantees__grid">
             <!-- {% for block in section.blocks %}
                 
                 <div class="guarantees__item {% if forloop.last %} no-border {% endif %}">
-                    <img src="{{block.settings.icon}}" />
+                    <img alt="icon image" src="{{block.settings.icon}}" />
                     <h3>{{block.settings.heading-1}}</h3>
                 </div>
             {% endfor %} -->
             <div class="guarantees__item">
-                <img src="" />
+                <img alt="icon image" src="" />
                 <h3>28 day returns</h3>
             </div>
             <div class="guarantees__item">
-                <img src="" />
+                <img alt="icon image" src="" />
                 <h3>28 day returns</h3>
             </div>
             <div class="guarantees__item">
-                <img src="" />
+                <img alt="icon image" src="" />
                 <h3>28 day returns</h3>
             </div>
             <div class="guarantees__item">
-                <img src="" />
+                <img alt="icon image" src="" />
                 <h3>28 day returns</h3>
             </div>
             <div class="guarantees__item">
-                <img src="" />
+                <img alt="icon image" src="" />
                 <h3>28 day returns</h3>
             </div>
             <div class="guarantees__item no-border">
-                <img src="" />
+                <img alt="icon image" src="" />
                 <h3>28 day returns</h3>
             </div>
 
@@ -45,7 +45,7 @@
 
 {% schema %}
 {
-"name": "guarantees",
+"name": "Guarantees Section",
 "settings": [
 {
 "id": "heading-1",
@@ -59,7 +59,7 @@
 "label": "CTA Background Colour",
 "default": "#fff"
 },
-{ 
+{
 "id": "cta-border-color",
 "type": "color",
 "label": "CTA Border Colour",
@@ -70,6 +70,12 @@
 "type": "text",
 "label": "CTA Text",
 "default": "Find Out More"
+},
+{
+"id": "cta-url",
+"type": "url",
+"label": "CTA Link",
+"default": "/"
 }
 ],
 "blocks": [

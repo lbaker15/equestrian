@@ -589,6 +589,7 @@ h6 {
   font-style: $headerFontStyle;
   margin: 0 0 0.5em;
   line-height: 1.4;
+  font-display: block !important;
   text-rendering: optimizeLegibility;
 
   // Headings in the hero/slideshow use the color set in
@@ -3541,11 +3542,11 @@ $mobileContainer: 90%;
   margin-right: auto;
   padding: 25px;
 }
-.hero__text h1 {
+.hero__text h2 {
   color: white;
   font-size: 36px;
 }
-.hero__text h2 {
+.hero__text h3 {
   color: white;
   font-size: 26px;
 }
@@ -3681,11 +3682,10 @@ $height: 65px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  h1 { color: white !important; }
   h2 { color: white !important; }
+  h3 { color: white !important; }
 }
 .craftmanship__section {
-  background: black;
   padding: $sectionPaddingLarge 0px;
 }
 .craftmanship__item {
@@ -3953,12 +3953,11 @@ $parentWidth: 800px;
   margin-left: auto;
   text-align: center;
   margin-right: auto;
-  background: black;
-}
-.instagram h1 {
-  color: white;
 }
 .instagram h2 {
+  color: white;
+}
+.instagram h3 {
   color: white;
   margin-bottom: 40px;
   width: 90%;
@@ -3970,11 +3969,6 @@ $parentWidth: 800px;
   margin-bottom: 40px;
   margin-left: auto; margin-right: auto;
 }
-// .instagram__embed {
-//   width: 100%;
-//   height: 1px;
-//   background: black;
-// }
 .instagram__grid {
   display:grid;
   grid-template-columns: repeat(3, 1fr);

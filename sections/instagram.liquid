@@ -1,8 +1,8 @@
-<section class="no-pad instagram__section">
+<section style="{% if section.settings.bg-image %} background-image: url('{{section.settings.bg-image | image_url}}'); background-size: cover; background-position: 50% 50%; {% else %} background: black; {% endif %}" class="no-pad instagram__section">
     <div class="instagram">
         <div class="instagram__icon"></div>
-        <h1>{{section.settings.heading-1}}</h1>
-        <h2>{{section.settings.heading-2}}</h2>
+        <h2>{{section.settings.heading-1}}</h2>
+        <h3>{{section.settings.heading-2}}</h3>
         <!-- <div class="instagram__embed"></div> -->
         <div class="instagram__grid">
             {% for image in section.blocks %}
@@ -19,8 +19,13 @@
 
 {% schema %}
 {
-"name": "instagram",
+"name": "Instagram Section",
 "settings": [
+{
+    "id": "bg-image",
+    "type": "image_picker",
+    "label": "Background Image"
+},
 {
 "id": "heading-1",
 "type": "text",
@@ -50,10 +55,16 @@
 "type": "text",
 "label": "CTA Text",
 "default": "Join @ASUR_EQUESTRIAN"
+},
+{
+"id": "cta-url",
+"type": "url",
+"label": "CTA Link",
+"default": "/"
 }
 ],
 "blocks": [
-{"name": "instagram image", "type": "image_picker", "settings": [
+{"name": "instagram image", "type": "image_picker", "limit": 9, "settings": [
 {
 "id": "insta_image",
 "type": "image_picker",
