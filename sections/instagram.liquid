@@ -1,15 +1,22 @@
 <section style="{% if section.settings.bg-image %} background-image: url('{{section.settings.bg-image | image_url}}'); background-size: cover; background-position: 50% 50%; {% else %} background: black; {% endif %}" class="no-pad instagram__section">
     <div class="instagram">
-        <div class="instagram__icon"></div>
+        <div class="instagram__icon">
+            <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/INSTSAGRAM.png?v=1652725701" />
+        </div>
         <h2>{{section.settings.heading-1}}</h2>
         <h3>{{section.settings.heading-2}}</h3>
-        <!-- <div class="instagram__embed"></div> -->
+        <!-- <div class="instagram__embed"></div> --> 
         <div class="instagram__grid">
-            {% for image in section.blocks %}
-                <div class="instagram__item">
-                    <div style="background-image: url('{{image.settings.insta_image | image_url}}');"></div>
-                </div>
-            {% endfor %}
+            {% if section.blocks.size == 1 %}
+                {% assign image = section.blocks[0] %}
+                <img class="instagram__item-fullsize" src="{{image.settings.insta_image | image_url}}" />
+            {% else %}
+                {% for image in section.blocks %}
+                    <div class="instagram__item"> 
+                        <div style="background-image: url('{{image.settings.insta_image | image_url}}');"></div>
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
         <div class="instagram__btn">
             {% render "swipe-btn" %}
@@ -35,7 +42,7 @@
 {
 "id": "heading-2",
 "type": "text",
-"label": "Heading 2",
+"label": "Subheading",
 "default": "Connect with us to see behind the scenes shots, our favourite influencers and much more."
 },
 {

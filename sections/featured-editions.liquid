@@ -8,9 +8,11 @@
             {% assign size = 'edition__small' %}
             {% endif %}
             <div class="edition__item {{size}}">
-                <div class="img" style="background-image: url('{{block.settings.edition.featured_image  | image_url }}'); background-size: cover; background-position: 50% 50%;"></div>
+                <div class="img"
+                    style="background-image: url('{{block.settings.image | image_url }}'); background-size: cover; background-position: 50% 50%;">
+                </div>
                 <div class="edition__item-title">
-                    <a href="{{block.settings.edition.url}}"> {{block.settings.edition.title}} </a>
+                    <a href="{{block.settings.link}}"> {{block.settings.text}} </a>
                 </div>
             </div>
             {% endfor %}
@@ -27,9 +29,19 @@
 "type": "edition",
 "settings": [
 {
-"type": "product",
-"id": "edition",
-"label": "Edition"
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+},
+{
+"type": "text",
+"id": "text",
+"label": "Text"
+},
+{
+"type": "url",
+"id": "link",
+"label": "Link"
 }
 ]
 }

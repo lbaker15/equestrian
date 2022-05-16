@@ -1,5 +1,32 @@
 <div class="header">
-  <div class="header__menu"></div>
-  <div class="header__logo"></div>
-  <div class="header__cart"></div>
+  <div class="header__inner">
+    <div class="header__menu">
+      <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/BURGER.png?v=1652728975" />
+    </div>
+    <div class="header__logo">
+      <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/HEADER_LOGO.png?v=1652728919" />
+    </div>
+    <div class="header__cart">
+      <img src="{{section.settings.bag-empty|image_url}}" />
+    </div>
+  </div>
 </div>
+
+
+{% schema %}
+{
+"name": "header",
+"settings": [
+{
+"id": "bag-empty",
+"type": "image_picker",
+"label": "Shopping bag no colour"
+},
+{
+"id": "bag-full",
+"type": "image_picker",
+"label": "Shopping bag full colour"
+}
+]
+}
+{% endschema %}

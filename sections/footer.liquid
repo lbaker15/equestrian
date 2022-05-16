@@ -3,7 +3,7 @@
     <div class="footer__news">
       <h2>Join Our Newsletter</h2>
       <div class="footer__news-flex">
-        <input class="input" />
+        <input class="input" placeholder="Join our newsletter" />
         <div class="news-btn">
           {% render "swipe-btn" %}
         </div>
@@ -13,7 +13,7 @@
       <h2>Follow Us</h2>
       <div class="footer__social-flex">
         {% if settings.social_instagram_link != blank %}
-        <a href="{{settings.social_instagram_link}}"><img alt="Instagram logo" src="" /></a>
+        <a href="{{settings.social_instagram_link}}"><img alt="Instagram logo" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/INSTSAGRAM.png?v=1652725701" /></a>
         {% endif %}
         {% if settings.social_facebook_link != blank %}
         <a href="{{settings.social_facebook_link}}"><img alt="Facebook logo" src="" /></a>
@@ -28,7 +28,7 @@
     ">
         <a href="{{link.url}}">
           {% if link.title == 'My Account' %}
-          <img class="footer__horse" alt="My account icon" src="" />
+          <img class="footer__horse" alt="My account icon" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/horse_head.png?v=1652731212" />
           {% endif %}
           {{link.title}}
         </a>

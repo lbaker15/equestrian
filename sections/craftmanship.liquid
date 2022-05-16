@@ -7,7 +7,9 @@
         <div class="grid-12 craftmanship__grid">
             {% for block in section.blocks %}
             <div class="craftmanship__item">
-                <img src="{{block.settings.icon}}" alt="{{block.settings.heading-1}} icon image" />
+                <div class="craftmanship__item-img">
+                    <img src="{{block.settings.icon | image_url }}" alt="{{block.settings.heading-1}} icon image" />
+                </div>
                 <h3 style="color: {{section.settings.text-color}}">{{block.settings.heading-1}}</h3>
                 <h4 style="color: {{section.settings.text-color}}">{{block.settings.heading-2}}</h4>
             </div>
@@ -34,7 +36,7 @@
 {
 "id": "heading-2",
 "type": "text",
-"label": "Heading 2",
+"label": "Subheading",
 "default": "Expertly handcrafted in the UK by master tailors. Engineered to last the test of time and trend."
 },
 {
@@ -46,18 +48,6 @@
 "id": "text-color",
 "type": "color",
 "label": "Text Colour",
-"default": "#fff"
-},
-{
-"id": "cta-background-color",
-"type": "color",
-"label": "CTA Background Colour",
-"default": "#000"
-},
-{
-"id": "cta-border-color",
-"type": "color",
-"label": "CTA Border Colour",
 "default": "#fff"
 },
 {

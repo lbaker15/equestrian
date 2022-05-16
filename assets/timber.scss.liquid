@@ -3485,6 +3485,17 @@ $sectionPaddingSmall: 25px;
 $desktopContainer: 1000px;
 $laptopContainer: 800px;
 $mobileContainer: 90%;
+$header: 100px;
+// 576px for portrait phones.
+// 768px for tablets.
+// 992px for laptops.
+// 1200px for large devices.
+//BREAKPOINTS
+$smallPhone: 576px;
+$phone: 768px;
+$tablet: 992px;
+$laptop: 1200px;
+
 
 #shopify-section-hero {
   padding: 0 !important;
@@ -3517,8 +3528,7 @@ $mobileContainer: 90%;
 .hero__img-inner {
   width: 100%;
   height: 100%;
-  background-size: cover; background-position: 50% 50%;
-  background: red;
+  background-size: cover; background-position: 30% 50%;
 }
 .hero__text {
   display: flex;
@@ -3538,20 +3548,49 @@ $mobileContainer: 90%;
   gap: 2px;
   flex-direction: column;
   text-align: center;
+  margin-top: $header;
   align-items: center;
   margin-right: auto;
   padding: 25px;
 }
 .hero__text h2 {
   color: white;
-  font-size: 36px;
+  letter-spacing: 8px;
+  font-family: Roboto;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 51px;
 }
+
 .hero__text h3 {
   color: white;
-  font-size: 26px;
+  font-size: 41px;
+  font-weight: 400;
+  font-family: "Parisienne";
 }
 .hero__btn {
   margin-top: 20px;
+}
+.hero__btn .input-group {
+  min-width: 180px;
+  height: 55px;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+.hero__btn .input-group .input-group-btn {
+  vertical-align: none;
+}
+.hero__btn .input-group .input-group-btn input {
+  letter-spacing: 1.5px;
+  line-height: 0;
+  font-weight: 300;
+}
+@media (max-width: 1000px) {
+  .hero__text h2 {
+    font-size: 42px;
+    letter-spacing: 6px;
+  }
 }
 @media (max-width: 768px) {
   .hero__img {
@@ -3567,19 +3606,22 @@ $mobileContainer: 90%;
     height: 100vh;
     padding-bottom: 5vh;
   }
+  .hero__text h2 {
+  }
   .hero_2 {
     height: 100vh;
   }
 }
-// 576px for portrait phones.
-// 768px for tablets.
-// 992px for laptops.
-// 1200px for large devices.
-//BREAKPOINTS
-$smallPhone: 576px;
-$phone: 768px;
-$tablet: 992px;
-$laptop: 1200px;
+@media (max-width: $phone) {
+  .hero__text h2, .hero__text .h2 {
+    font-size: calc(30px + 2.5vw);
+    margin-bottom: 10px;
+  }
+  .hero__text h3 {
+    margin-bottom: 10px;
+  }
+}
+
 
 .edition__section {
   padding: $sectionPaddingLarge 0px;
@@ -3604,7 +3646,7 @@ $laptop: 1200px;
   max-height: 250px;
 }
 .edition__item {
-  background: red;
+  background: #c3c3c3;
   display: flex;
   flex-direction: column;
   .img {
@@ -3628,9 +3670,11 @@ $laptop: 1200px;
   position: relative;
   z-index: 100;
   background: rgba(0,0,0,0.5);
+  font-family: "roboto"; font-weight: 300;
 }
 .edition__item-title a {
   color: white;
+  font-size: 88%;
 }
 .edition__item-title a:hover {
   color: #c3c3c3;
@@ -3682,29 +3726,40 @@ $height: 65px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  h2 { color: white !important; }
-  h3 { color: white !important; }
+  h2 { color: white !important; font-family: "Parisienne"; font-size: 62px; }
+  h3 { color: white !important; font-family: "roboto"; font-size: 28px; font-weight: 300; }
 }
 .craftmanship__section {
   padding: $sectionPaddingLarge 0px;
-}
+} 
 .craftmanship__item {
   grid-column: span 4;
   background: rgba(255, 255, 255, 0.2);
   padding: $paddingTop 25px 10px 25px;
 }
-.craftmanship__item img {
-  background: red;
+.craftmanship__item-img {
   width: $height; height: $height;
-  border-radius: 50%;
-  position: absolute;
+  border-radius: 50%; background: black;
+  padding: 5px;
   margin-top: - $paddingTop - $height / 2;
-  margin-left: - $height / 2;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  display: flex; justify-content: center; align-items: center;
+}
+.craftmanship__item img {
+  width: auto; height: 35px;
 }
 .craftmanship__item h3 {
   margin-bottom: 5px;
+  font-size: 26px;
+  text-transform: uppercase;
+  font-weight: 500;
 }
-.craftmanship__item h4 {}
+.craftmanship__item h4 {
+  font-weight: 300;
+  font-size: 18px;
+}
 .craftmanship__grid {
   gap: calc(10px + 1vw);
   grid-template-rows: auto auto;
@@ -3720,6 +3775,20 @@ $height: 65px;
 .craftmanship__btn-inner {
   margin-left: auto;
   margin-right: auto;
+}
+.craftmanship__btn-inner .input-group {
+  min-width: 240px;
+  height: 55px;
+  font-size: 20px;
+}
+.craftmanship__btn-inner .input-group .input-group-btn {
+  vertical-align: none;
+  box-shadow: inset 0 0 0 1px white !important;
+}
+.craftmanship__btn-inner .input-group .input-group-btn input {
+  letter-spacing: 2px;
+  line-height: 0; 
+  font-weight: 300;
 }
 @media (max-width: $laptop) {
   .craftmanship {
@@ -3785,27 +3854,51 @@ $parentWidth: 800px;
   text-align: center;
 }
 .story__image {
-  width: $width;
+  width: 600px;
   position: absolute;
-  height: $width;
+  height: 570px;
   margin-left: auto;
   z-index: 0;
   margin-right: auto;
-  background: red;
-  border-radius: 50%;
 }
 .story__text {
   z-index: 10;
   position: relative;
 }
+.story__text h2 {
+  font-family: "Parisienne";
+  font-size: 72px;
+  font-weight: 300;
+}
+.story__text h3 {
+  font-family: "roboto";
+  font-size: 28px;
+  padding: 5px;
+  font-weight: 300;
+  background: white;
+}
 .story__btn {
   position: relative;
   margin-left: auto; margin-right: auto;
-  width: $parentWidth;
+  width: 100%;
   display: flex;
   height: 150px;
   justify-content: center;
   align-items: center;
+}
+.story__btn .input-group {
+  min-width: 240px;
+  height: 55px;
+  text-align: center;
+  font-size: 20px;
+}
+.story__btn .input-group .input-group-btn {
+  vertical-align: none;
+}
+.story__btn .input-group .input-group-btn input {
+  letter-spacing: 2px;
+  line-height: 0; 
+  font-weight: 300;
 }
 .story__btn .input-group-btn::before {
   background: black;
@@ -3818,7 +3911,7 @@ $parentWidth: 800px;
   }
   .story__image {
     width: 550px;
-    height: 550px;
+    height: 520px;
   }
 }
 @media (max-width: $phone) {
@@ -3829,13 +3922,43 @@ $parentWidth: 800px;
     width: 100%;
   }
   .story__text {
-    width: 70vw;
+    width: 57vw;
+    h2 {
+      margin-bottom: 10px;
+      font-size: calc(40px + 5vw);
+    }
+    h3 {
+      font-size: calc(18px + 1vw);
+      background: transparent;
+    }
   }
   .story__image {
     min-width: 400px;
-    min-height: 400px;
+    min-height: 370px;
     width: 80vw;
     height: 80vw;
+  }
+}
+@media (max-width: 550px) {
+  .story__text {
+    width: 57vw;
+    h2 {
+      margin-bottom: 10px;
+      font-size: calc(40px + 2vw);
+    }
+    h3 {
+      font-size: calc(16px + 1vw);
+      background: transparent;
+    }
+  }
+}
+@media (max-width: 460px) {
+  .story__image {
+    min-width: 360px;
+    min-height: 360px;
+  }
+  .story__btn {
+    margin-top: 25px;
   }
 }
 
@@ -3850,6 +3973,10 @@ $parentWidth: 800px;
   text-align: center;
   margin-right: auto;
 }
+.guarantees h2 {
+  font-family: "Parisienne";
+  font-size: 62px;
+}
 .guarantees__grid {
   grid-template-rows: auto auto;
 }
@@ -3857,17 +3984,19 @@ $parentWidth: 800px;
   grid-column: span 2;
   border-right: 1px solid black;
   display: flex; flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 25px 0px;
 }
 .guarantees__item img {
-  width: 50px; height: 50px;
-  background: red;
-  border-radius: 50%;
+  width: auto; height: 50px;
+  margin-bottom: 5px;
 }
 .guarantees__item h3 {
   margin-bottom: 0;
+  font-size: 20px; font-family: "roboto";
+  font-weight: 300;
+  padding: 5px 22px 0px 22px;
 }
 .no-border {
   border-right: none !important;
@@ -3956,17 +4085,23 @@ $parentWidth: 800px;
 }
 .instagram h2 {
   color: white;
+  font-family: "Parisienne";
+  font-size: 62px;
+  margin-bottom: 10px;
 }
 .instagram h3 {
   color: white;
   margin-bottom: 40px;
+  font-family: "roboto";
+  font-weight: 300;
+  font-size: 28px;
   width: 90%;
   margin-left: auto; margin-right: auto;
 }
 .instagram__icon {
-  background: red; border-radius: 50%;
-  width: 60px; height: 60px;
-  margin-bottom: 40px;
+  border-radius: 50%;
+  width: 65px; height: 65px;
+  margin-bottom: 20px;
   margin-left: auto; margin-right: auto;
 }
 .instagram__grid {
@@ -3991,6 +4126,10 @@ $margin: 33px;
   background-size: cover; width: 100%; height: 100%;
   background-position: 50% 50%;
 }
+.instagram__item-fullsize {
+  grid-column: span 3;
+}
+
 .sw-instagram-container {
   margin: 0 auto;
   background: transparent !important;
@@ -4007,8 +4146,20 @@ $margin: 33px;
   align-items: center;
 }
 .instagram__btn .input-group {
-  max-width: 200px;
+  min-width: 280px;
+  height: 55px;
+  text-align: center; 
+  font-size: 20px;
 }
+.instagram__btn .input-group .input-group-btn {
+  vertical-align: none;
+}
+.instagram__btn .input-group .input-group-btn input {
+  letter-spacing: 2px;
+  line-height: 0; 
+  font-weight: 300;
+}
+
 @media (max-width: $laptop) {
   .instagram {
     width: 800px;
@@ -4041,6 +4192,9 @@ $margin: 33px;
     grid-column: span 1; 
     height: 25.5vw;
   }
+  .instagram h2 {
+    font-size: calc(40px + 2.5vw);
+  }
 }
 
 .description__section {
@@ -4055,31 +4209,53 @@ $margin: 33px;
 }
 .description h1 {
   color: white;
+  font-family: "roboto";
+  font-size: 28px;
+  font-weight:500;
 }
 .description h2 {
   color: white;
+  font-family: "roboto";
+  font-size: 20px;
+  font-weight:300;
 } 
 
 
 
 
 .header {
-  width: 100%; height: 80px;
-  display: flex; background: black;
-  justify-content: space-between;
+  width: 90%; height: $header;
   position: absolute;
-  z-index: 10;
+  z-index: 100;
+  margin-left: 5%;
   background: transparent;
   color: white;
 }
+.header__inner {
+  display: flex; 
+  max-width: 1000px;
+  z-index: 100;
+  height: 100%; position: relative;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto; margin-right: auto;
+}
 .header__menu {
   width: 50px;
+  filter: invert(1);
+  img {
+    max-height: 40px;
+  }
 }
 .header__logo {
   width: 150px;
+  filter: invert(1);
 }
 .header__cart {
+  z-index: 10;
+  position: relative;
   width: 50px;
+  filter: invert(1);
 }
 
 footer {
@@ -4100,6 +4276,7 @@ footer {
   grid-template-rows: auto;
   grid-template-columns: repeat(6, 1fr);
   padding: $sectionPaddingSmall 0px;
+  font-family: "roboto";
 }
 .footer__links-item {
   height: 50px;
@@ -4130,6 +4307,9 @@ footer {
 }
 .footer__news h2 {
   color: white;
+  font-family: "Parisienne";
+  font-size: 42px;
+  font-weight: 300;
 }
 .footer__news-flex {
   display: flex;
@@ -4155,13 +4335,14 @@ $footerH: 45px;
 }
 .footer__social h2 {
   color: white;
+  font-family: "Parisienne";
+  font-size: 42px;
+  font-weight: 300;
 }
 .footer__social-flex {
   display: flex;
 }
 .footer__social-flex a img {
-  background: red;
-  border-radius: 50%;
   width: 40px; height: 40px;
 }
 .footer__payment {
@@ -4170,6 +4351,11 @@ $footerH: 45px;
   flex-wrap: wrap;
   margin-left: auto; margin-right: auto;
   padding: 25px 0px;
+}
+.footer__payment h2 {
+  font-family: "Parisienne";
+  font-size: 42px;
+  font-weight: 300;
 }
 .footer__copyright {
   font-size: 14px; color: white;
