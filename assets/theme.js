@@ -3934,3 +3934,23 @@ var afterResize = (function () {
     t[uniqueId] = setTimeout(callback, ms);
   };
 })();
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  let menu = document.querySelector('.header__menu');
+  let list = document.querySelector('.header__menu-list');
+  let state = false;
+  menu.addEventListener('click', () => {
+    if (!state) {
+      list.style.display = 'block'
+      setTimeout(() => list.style.transform = 'translateX(0vw)', 1)
+      document.body.style.overflowY = 'hidden'
+      state = true;
+    } else {
+      setTimeout(() => list.style.display = 'none', 500)
+      list.style.transform = 'translateX(-100vw)'
+      document.body.style.overflowY = 'scroll'
+      state = false;
+    }
+  })
+})

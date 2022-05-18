@@ -1,4 +1,5 @@
 <div class="header">
+  <div class="header__menu-list"></div>
   <div class="header__inner">
     <div class="header__menu">
       <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/BURGER.png?v=1652728975" />
@@ -7,7 +8,12 @@
       <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/HEADER_LOGO.png?v=1652728919" />
     </div>
     <div class="header__cart">
+      {% if cart.item_count > 0 %}
+      <img src="{{section.settings.bag-full|image_url}}" />
+      <div class="header__cart-count">{{cart.item_count}}</div>
+      {% else %}
       <img src="{{section.settings.bag-empty|image_url}}" />
+      {% endif %}
     </div>
   </div>
 </div>
