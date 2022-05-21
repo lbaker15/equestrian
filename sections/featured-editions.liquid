@@ -7,14 +7,14 @@
             {% else %}
             {% assign size = 'edition__small' %}
             {% endif %}
-            <div class="edition__item {{size}}">
-                <div class="img"
-                    style="background-image: url('{{block.settings.image | image_url }}'); background-size: cover; background-position: 50% 50%;">
-                </div>
-                <div class="edition__item-title">
-                    <a href="{{block.settings.link}}"> {{block.settings.text}} </a>
-                </div>
-            </div> 
+            <a class="{{size}} edition__item" href="https://www.lael.com">
+                    <div class="img"
+                        style="background-image: url('{{block.settings.image | image_url }}'); background-size: cover; background-position: 50% 50%;">
+                    </div>
+                    <div class="edition__item-title">
+                        <span> {{block.settings.text}} </span>
+                    </div>
+            </a>
             {% endfor %}
         </div>
     </div>

@@ -1,25 +1,39 @@
-<section style="{% if section.settings.bg-image %} background-image: url('{{section.settings.bg-image | image_url}}'); background-size: cover; background-position: 50% 50%; {% else %} background: black; {% endif %}" class="no-pad instagram__section">
+<section
+    style="{% if section.settings.bg-image %} background-image: url('{{section.settings.bg-image | image_url}}'); background-size: cover; background-position: 50% 50%; {% else %} background: black; {% endif %}"
+    class="no-pad instagram__section">
     <div class="instagram">
         <div class="instagram__icon">
             <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/INSTSAGRAM.png?v=1652725701" />
         </div>
-        <h2>{{section.settings.heading-1}}</h2>
+        <h2><a target="_blank" href="{{ section.settings.instagram_link }}"> {{section.settings.heading-1}} </a></h2>
         <h3>{{section.settings.heading-2}}</h3>
-        <!-- <div class="instagram__embed"></div> --> 
+        <!-- <div class="instagram__embed"></div> -->
         <div class="instagram__grid">
             {% if section.blocks.size == 1 %}
-                {% assign image = section.blocks[0] %}
-                <img class="instagram__item-fullsize" src="{{image.settings.insta_image | image_url}}" />
+            {% assign image = section.blocks[0] %}
+            <img class="instagram__item-fullsize" src="{{image.settings.insta_image | image_url}}" />
             {% else %}
-                {% for image in section.blocks %}
-                    <div class="instagram__item"> 
-                        <div style="background-image: url('{{image.settings.insta_image | image_url}}');"></div>
-                    </div>
-                {% endfor %}
+            {% for image in section.blocks %}
+            <div class="instagram__item">
+                <div style="background-image: url('{{image.settings.insta_image | image_url}}');"></div>
+            </div>
+            {% endfor %}
             {% endif %}
         </div>
         <div class="instagram__btn">
-            {% render "swipe-btn" %}
+            {% if section.settings.cta-background-color == 'transparent' or section.settings.cta-background-color ==
+            null %}
+            {% assign class = 'input-group-btn-trans_bg' %}
+            {% endif %}
+            <div class="input-group">
+                <span style="
+            background: {{section.settings.cta-background-color}};
+            box-shadow: inset 0 0 0 1px {{section.settings.cta-border-color}};" class="input-group-btn {{class}}">
+                    <a target="_blank" href="{{section.settings.instagram_link}}"> </a>
+                    <input value="{{section.settings.cta-text}}" style="white-space:nowrap;text-transform:uppercase"
+                        type="submit" class="btn__mine">
+                </span>
+            </div>
         </div>
     </div>
 </section>
@@ -29,15 +43,21 @@
 "name": "Instagram Section",
 "settings": [
 {
-    "id": "bg-image",
-    "type": "image_picker",
-    "label": "Background Image"
+"id": "bg-image",
+"type": "image_picker",
+"label": "Background Image"
 },
 {
 "id": "heading-1",
 "type": "text",
 "label": "Heading 1",
 "default": "@Asur_equestrian"
+},
+{
+"id": "instagram_link",
+"type": "text",
+"label": "Your Instagram Url",
+"default": "https://instagram.com/Asur_equestrian"
 },
 {
 "id": "heading-2",

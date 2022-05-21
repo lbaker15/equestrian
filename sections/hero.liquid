@@ -9,7 +9,7 @@
 <section class="grid-12 hero_2">
   <!-- Hero Slider-->
   <div class="hero__img">
-    <div style="opacity: {{opacity}}" class="hero__img_2">
+    <div style="opacity: {{opacity}}; {% if section.settings.image-overlay-display == 'true' %} display: none; {% else %} display: block; {% endif %}" class="hero__img_2">
     </div>
     <div style="background-image: url('{{section.settings.image | image_url }}');" class="hero__img-inner"></div>
   </div>
@@ -77,6 +77,13 @@
 "min": 0, "max": 10,
 "default": 5,
 "label": "Image Overlay Opacity"
+},
+{
+"id": "image-overlay-display",
+"type": "radio",
+"options": [{"value": "false"}, {"value": "true"}],
+"label": "Image Overlay Hide",
+"default": "false"
 },
 {
 "id": "text-position",

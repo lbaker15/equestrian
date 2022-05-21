@@ -1,12 +1,16 @@
+{% if section.settings.cta-background-color == 'transparent' or section.settings.cta-background-color == null %}
+  {% assign class = 'input-group-btn-trans_bg' %}
+{% endif %}
 <div class="input-group">
-    <span 
-    style="
-    background: {{section.settings.cta-background-color}};
-    box-shadow: inset 0 0 0 1px {{section.settings.cta-border-color}};"
-    class="input-group-btn">
-      <input
-      value="{{section.settings.cta-text}}"
-      style="white-space:nowrap;text-transform:uppercase"
-      type="submit" class="btn password-page__signup-form__submit" >
-    </span>
-  </div>
+  <span 
+  style="
+  background: {{section.settings.cta-background-color}};
+  box-shadow: inset 0 0 0 1px {{section.settings.cta-border-color}};"
+  class="input-group-btn {{class}}">
+  <a href="{{section.settings.cta-link}}"> </a>
+    <input
+    value="{{section.settings.cta-text}}"
+    style="white-space:nowrap;text-transform:uppercase"
+    type="submit" class="btn__mine" >
+  </span>
+</div>
