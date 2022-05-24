@@ -7,7 +7,7 @@
             {% else %}
             {% assign size = 'edition__small' %}
             {% endif %}
-            <a class="{{size}} edition__item" href="https://www.lael.com">
+            <a class="{{size}} edition__item" href="{{block.settings.link}}">
                     <div class="img"
                         style="background-image: url('{{block.settings.image | image_url }}'); background-size: cover; background-position: 50% 50%;">
                     </div>
