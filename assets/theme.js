@@ -4025,11 +4025,18 @@ window.addEventListener('DOMContentLoaded', () => {
   let prodSizeH = document.getElementById('prod-size-hide');
   let selectedV = document.getElementById('selected_variant');
   let prodCart = document.getElementById('prod-cart');
+  let prodDets = document.getElementById('prod-dets');
+  let garCare = document.getElementById('gar-care');
+  let shipping = document.getElementById('shipping');
+  let prodDetsSection = document.getElementById('prod-dets-section');
+  let garCareSection = document.getElementById('gar-care-section');
+  let shippingSection = document.getElementById('shipping-section');
+  let sizeGuide = document.getElementById('size-guide');
   let prodSizeClicked = false
   prodSize.addEventListener('click', (e) => {
     if (e.target === prodSizeH2) {
       let tl = gsap.timeline({ paused: true })
-      tl.fromTo(prodSize, { borderLeft: '1px solid black', borderRight: '1px solid black' }, { borderLeft: '0', borderRight: '0', duration: 0.3, ease: 'easeOut' })
+      tl.fromTo(prodSize, { borderLeft: '2px solid black', borderRight: '2px solid black' }, { borderLeft: '0', borderRight: '0', duration: 0.3, ease: 'easeOut' })
       tl.fromTo(prodSizeH, { display: 'none', opacity: 0 }, { opacity: 1, display: 'block', duration: 0.3, ease: 'easeOut' })
       if (!prodSizeClicked) {
         tl.restart(0)
@@ -4080,4 +4087,47 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   })
 
+  let sizePopState = false;
+  let popSizeClose = document.getElementById('pop-size-close');
+  let popOverlay = document.querySelector('.size-guide-pop-overlay ');
+  let tl2 = gsap.timeline({ paused: true })
+  tl2.fromTo(popOverlay, { display: 'none', opacity: 0 }, { opacity: 1, display: 'flex', duration: 0.02 })
+  tl2.fromTo('.size-guide-pop', { display: 'none', opacity: 0 }, { opacity: 1, display: 'flex', duration: 0.2 })
+  sizeGuide.addEventListener('click', () => {
+    if (!sizePopState) {
+      tl2.restart(0)
+      sizePopState = true;
+    } else if (sizePopState) {
+      tl2.reverse(0)
+      sizePopState = false;
+    }
+  })
+  popSizeClose.addEventListener('click', () => {
+    tl2.reverse(0)
+    sizePopState = false;
+  })
+
+  let arr = [prodDets, garCare, shipping];
+  let arrSections = [prodDetsSection, garCareSection, shippingSection]
+  arr.map((item, i) => {
+    item.addEventListener('click', () => {
+      gsap.to(window, { duration: 0.5, scrollTo: arrSections[i] })
+    })
+  })
+
+  let prodImgCarousel = Array.from(document.querySelectorAll('.product__hero-c-img'));
+  let prodHeroImg = document.querySelector('.product__hero-img')
+  let scroller = document.querySelector('.product__hero-scroller-in')
+  gsap.set('.product__hero-carousel-inner', {width: (prodImgCarousel.length * 85) - 25})
+  prodImgCarousel.map((item, i) => {
+    item.addEventListener('click', (e) => {
+      let img = (e.target.querySelector('div').dataset.value);
+      prodHeroImg.style.backgroundImage = `url('${img}')`
+      let len = prodImgCarousel.length;
+      let gap = 100 / len;
+      console.log(len, gap, i+1 * gap)
+      let val = (i === len-1) ? ((i+1) * gap) + 20 :(i+1) * gap
+      gsap.to(scroller, {width: val + '%'})
+    })
+  })
 })

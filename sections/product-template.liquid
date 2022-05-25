@@ -26,11 +26,16 @@
   {%endfor%} -->
   {%assign no_stock = false%}
 
+  <div class="product-header-bg"></div>
   {{no_stock}}
   <div class="product__grid">
     <div class="product__hero">
       <div class="product__hero-l">
         <div style="background-image: url('{{product.featured_image.src}}');" class="product__hero-img"></div>
+        <div class="product__hero-scroller">
+          <div class="product__hero-scroller-in"></div>
+          <div class="triangle"></div>
+        </div>
       </div>
       <div class="product__hero-r">
         <h2 class="title">{{product.title}}</h2>
@@ -44,7 +49,13 @@
         <p class="klarna">make 3 payments of £100. No fees. <a>Learn More</a></p>
         <div class="product__hero-size">
           <p class="model"><span>model details:</span> {{ product.metafields.my_fields.model_info }}</p>
-          <p class="size"><a>size guide +</a></p>
+          <p class="size"><button id="size-guide">size guide +</button></p>
+          <div class="size-guide-pop-overlay"></div>
+          <div class="size-guide-pop">
+            <div class="popup-top">
+              <button id="pop-size-close">X</button>
+            </div>
+          </div>
         </div>
         <input type="text" value="" id="selected_variant" style="width: 1px; height: 1px; visibility:hidden;" />
         <div {% if no_stock==false %} id="prod-size" {% else %} id="grey-out" {% endif %}
@@ -64,8 +75,9 @@
                     <span style="
                     background: white;
                     box-shadow: inset 0 0 0 1px black;" class="input-group-btn {{class}}">
-                      <input data-value="{{variant.inventory_quantity}}" id="{{variant.id}} variant_select" value="{{variant.title}}"
-                        style="white-space:nowrap;text-transform:uppercase" type="submit" class="btn__mine">
+                      <input data-value="{{variant.inventory_quantity}}" id="{{variant.id}} variant_select"
+                        value="{{variant.title}}" style="white-space:nowrap;text-transform:uppercase" type="submit"
+                        class="btn__mine">
                     </span>
                   </div>
 
@@ -94,7 +106,8 @@
                   pointer-events: none;
                 " class="btn__mine">
                 <span id="add-c">Add To Cart</span>
-                <span id="added-c">Added To Cart <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/BAG.png?v=1652728986" /></span>
+                <span id="added-c">Added To Cart <img
+                    src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/BAG.png?v=1652728986" /></span>
               </div>
             </span>
           </div>
@@ -102,10 +115,66 @@
           <h2>Out Of Stock</h2>
           {% endif %}
         </div>
+
+        <div class="product__hero-list">
+          <div id="prod-dets" class="product__hero-list-item">
+            <div><img src="" />product details</div>
+            <div>+</div>
+          </div>
+          <div id="gar-care" class="product__hero-list-item">
+            <div><img src="" />garment care</div>
+            <div>+</div>
+          </div>
+          <div id="shipping" class="product__hero-list-item">
+            <div><img src="" />shipping and returns</div>
+            <div>+</div>
+          </div>
+        </div>
       </div>
-      <div class="product__hero-carousel"></div>
+
+      <div class="product__hero-carousel">
+        <div class="product__hero-carousel-inner">
+          <!-- {% for images in product.images %}
+            <div class="product__hero-c-img"></div>
+          {% endfor %} -->
+          <div class="product__hero-c-img">
+            <div
+              data-value="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAQlBMVEX///+hoaGenp6ampr39/fHx8fOzs7j4+P8/Pyvr6/d3d3FxcX29va6urqYmJjs7OzU1NSlpaW1tbWtra3n5+e/v78TS0zBAAACkUlEQVR4nO3b63KCMBCGYUwUUVEO6v3fagWVY4LYZMbZnff51xaZ5jON7CZNEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQb5tvI8qzX4/nH84XG5Upfj2ir2V2E5fZ/XpIX9saMnhkYLIkiyRJjdgMoiEDMmiQgfwM8rSu77ew2wnPoLTmwdZBs0J2BuXrYckcQm4nOoP+WcmWAbcTnUHZPy9eA24nOoN7n0HI54ToDM5k8PjluwyqgNuJzqDoaugPg8gWZ4noDAYLwuIg75fLeeHHsjNIzrZJwWwW+0DNsmEWPjiEZ5AcD8ZUu8VZ8HyQMifvBdIz+PS33i8adu+7Qn4Gn1Tdupl7rlCfQb9seosK7RkcBy1o30iVZ5CPOtDW3WhQnsF13IV3v0p3BqfJRoSpXVepzmA/24+yqeMyzRm4tqOs44lSUwa3yfgOri25av5CPRnklR33VlPnrqSZV09qMsiqSWV082xOz1uPajJ49pTM/f115k6guWa6JGjJ4N1lt8fXN2rv/vysjFaSQdFXBc/KKF04ptFPliclGVR9Bu27XCyeVOkmy5OODAZN9rYyyip/AIPJ8qIig+PoXbf7YdPdncFoSdCQQT4ZceV+MhiFMBy0hgyu0yGvOLI17KwpyGBaHK5jtt0N5GcwLw7XZdB31sRn8O+ziqYro8Vn4CwOV+k6a9Iz+PwRsKC7h+gMfMXhKu/OmuwM/MXhKq8yWnYG/uJw5Uxoy2jRGZTBZ/jboxuSM1guDtdNhKazJjiDbNMe0AxzKUVnkO+jEJxBxNtJzWCTxlNLzSB8KehJ/H+mJGYAjaDjzj9SnHZRuXZiAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECXP1XDHv7U4SNFAAAAAElFTkSuQmCC"
+              style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAQlBMVEX///+hoaGenp6ampr39/fHx8fOzs7j4+P8/Pyvr6/d3d3FxcX29va6urqYmJjs7OzU1NSlpaW1tbWtra3n5+e/v78TS0zBAAACkUlEQVR4nO3b63KCMBCGYUwUUVEO6v3fagWVY4LYZMbZnff51xaZ5jON7CZNEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQb5tvI8qzX4/nH84XG5Upfj2ir2V2E5fZ/XpIX9saMnhkYLIkiyRJjdgMoiEDMmiQgfwM8rSu77ew2wnPoLTmwdZBs0J2BuXrYckcQm4nOoP+WcmWAbcTnUHZPy9eA24nOoN7n0HI54ToDM5k8PjluwyqgNuJzqDoaugPg8gWZ4noDAYLwuIg75fLeeHHsjNIzrZJwWwW+0DNsmEWPjiEZ5AcD8ZUu8VZ8HyQMifvBdIz+PS33i8adu+7Qn4Gn1Tdupl7rlCfQb9seosK7RkcBy1o30iVZ5CPOtDW3WhQnsF13IV3v0p3BqfJRoSpXVepzmA/24+yqeMyzRm4tqOs44lSUwa3yfgOri25av5CPRnklR33VlPnrqSZV09qMsiqSWV082xOz1uPajJ49pTM/f115k6guWa6JGjJ4N1lt8fXN2rv/vysjFaSQdFXBc/KKF04ptFPliclGVR9Bu27XCyeVOkmy5OODAZN9rYyyip/AIPJ8qIig+PoXbf7YdPdncFoSdCQQT4ZceV+MhiFMBy0hgyu0yGvOLI17KwpyGBaHK5jtt0N5GcwLw7XZdB31sRn8O+ziqYro8Vn4CwOV+k6a9Iz+PwRsKC7h+gMfMXhKu/OmuwM/MXhKq8yWnYG/uJw5Uxoy2jRGZTBZ/jboxuSM1guDtdNhKazJjiDbNMe0AxzKUVnkO+jEJxBxNtJzWCTxlNLzSB8KehJ/H+mJGYAjaDjzj9SnHZRuXZiAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECXP1XDHv7U4SNFAAAAAElFTkSuQmCC')">
+            </div>
+          </div>
+          <div class="product__hero-c-img">
+            <div
+              data-value="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc="
+              style="background-image: url('https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=')">
+            </div>
+          </div>
+          <div class="product__hero-c-img">
+            <div data-value="" style="background-image: url('')"></div>
+          </div>
+          <div class="product__hero-c-img">
+            <div data-value="" style="background-image: url('')"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <div id="prod-dets-section" class="product__desc">
+    <h2>Product Details</h2>
+    <hr />
+    <p>{{product.description}}</p>
+  </div>
+  <div id="gar-care-section" class="product__gar">
+    <h2>Garmet care</h2>
+    <hr />
+    <div class="product__garment-list">
+      <div class="product__garment-item">
+        <img src="" />
+        <p><span>CARE NO. - </span>Lorem ipusm is the standard</p>
+      </div>
+    </div>
+  </div>
+  <div id="shipping-section" class=""></div>
 
 
 </div>
