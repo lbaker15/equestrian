@@ -3468,7 +3468,9 @@ shopify-payment-terms {
   color: $colorTextBody;
   display: block;
 }
-
+footer {
+  padding: 50px 0px;
+}
 
 
 
@@ -3546,6 +3548,7 @@ $header: 100px;
 // 992px for laptops.
 // 1200px for large devices.
 //BREAKPOINTS
+//CONTAINERS 1000px mw-laptop 800px mw-tablet 90% mw-phone 90% 20px padding
 $smallPhone: 576px;
 $phone: 768px;
 $tablet: 992px;
@@ -4340,7 +4343,6 @@ $margin: 33px;
 
 footer {
   background: black;
-  padding: $sectionPaddingLarge;
 }
 .footer__inner {
   width: $desktopContainer;
@@ -4611,7 +4613,9 @@ $topPadProd: 15px;
   height: auto;
   padding: $topPadProd 0px 25px;
 }
-
+.r__inner {
+  width: 100%;
+}
 .product__hero-price h3:nth-child(2) {
   text-decoration: line-through;
   color: grey;
@@ -4628,8 +4632,14 @@ $topPadProd: 15px;
   margin-bottom: 10px;
 }
 .product__hero-r .klarna {
-  font-size: 14px; color: grey;
+  font-size: 14px; color: #525252;
   margin-bottom: 30px;
+  font-family: montserrat;
+}
+.product__hero-r .klarna a {
+  font-weight: 600;
+  text-decoration: underline;
+  color: black; 
 }
 .product__hero-size {
   display: flex;
@@ -4735,6 +4745,18 @@ $popupWidth: 500px;
 .prod-size-box {
   width: 25px; height: 25px;
 }
+.prod-size-box hr:nth-child(1) {
+  position: absolute;
+  width: 40px;
+  transform: rotate(45deg);
+  background:grey;
+}
+.prod-size-box hr:nth-child(2) {
+  position: absolute;
+  width: 40px;
+  transform: rotate(-45deg);
+  background:grey;
+}
 .prod-size-box .btn__mine {
   width:30px !important; height:30px !important; 
   max-height: 30px !important; max-width: 30px !important;
@@ -4808,7 +4830,24 @@ $popupWidth: 500px;
   height: 80px;
   width: 100%;
   grid-column: span 8;
+  z-index: 2;
+  background: white;
 }
+.carousel-triangle-outer {
+  width: 100%;
+}
+.carousel-triangle {
+  width: 50px;
+  height: 50px;
+  background: white;
+  position: relative;
+  transform: rotate(45deg);
+  margin-right: auto;
+  margin-top: -20px;
+  margin-left: auto;
+  z-index: 2;
+}
+
 .product__hero-carousel-inner {
   display: flex; justify-content: flex-start;
   gap: 25px;
@@ -4823,6 +4862,7 @@ $popupWidth: 500px;
   background:red;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
+  z-index: 3;
   flex-shrink: 0;
 }
 .product__hero-c-img div {
@@ -4851,6 +4891,12 @@ $popupWidth: 500px;
   background: black;
   display: flex; flex-direction: column;
   align-items: center;
+  z-index: 1;
+}
+.desc__inner {
+  max-width: 1000px;
+  display: flex; flex-direction: column;
+  align-items: center;
 }
 .product__desc h2 {
   font-family: "parisienne";
@@ -4870,19 +4916,18 @@ $popupWidth: 500px;
   font-size: 16px;
   font-weight: 300;
   color: white; 
-  width: 90%;
-  max-width: 1000px;
+  width: 100%;
   text-align: center;
-}
-@media (max-width: $laptop) {
-  .product__desc p {
-    max-width: 800px;
-  }
 }
 .product__gar {
   width: 100%;
   padding: $sectionMargin 0;
   background: black;
+  display: flex; flex-direction: column;
+  align-items: center;
+}
+.gar__inner {
+  width: 1000px;
   display: flex; flex-direction: column;
   align-items: center;
 }
@@ -4901,19 +4946,24 @@ $popupWidth: 500px;
 }
 .product__garment-list {
   padding-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center; gap: 10px;
+  flex-wrap: wrap;
 }
 .product__garment-item {
   font-family: montserrat;
   font-size: 16px;
   font-weight: 300;
-  width: 1000px;
+  min-width: 250px;
   color: white; 
   background: rgba(255,255,255,0.2);
-  padding: 10px 0px;
   text-align: left;
   display: flex; justify-content: center;
   align-items: center;
   height: auto;
+  padding: 10px 30px;
+  width: 32%; 
 }
 .product__garment-item span {
   font-weight: 600;
@@ -4921,8 +4971,133 @@ $popupWidth: 500px;
 .product__garment-item p {
   margin-bottom: 0;
 }
+
+
+
 @media (max-width: $laptop) {
-  .product__garment-item {
+  .desc__inner{
+    max-width: 800px;
+  }
+  .gar__inner {
     width: 800px;
+  }
+  .desc__inner {
+    width: 800px;
+  }
+}
+@media (max-width: $tablet) {
+  .product__grid {
+    width: 100%;
+  }
+  .r__inner {
+    width: 95%;
+  }
+  .product__hero-size {
+    height: auto;
+    margin-bottom: -25px;
+  }
+  .product__garment-list {
+    width: 100%;
+    flex-direction: column;
+  }
+  .product__garment-item {
+    width: 100%;
+  }
+  .gar__inner {
+    width: 90%;
+    margin-left: auto; margin-right: auto;
+  }
+  .desc__inner { 
+    margin-left: auto; margin-right: auto;
+    width: 90%;
+  }
+}
+@media (max-width: 769px) {
+  .product__grid {
+    padding-top: 90px;
+  } 
+}
+@media (max-width: $phone) {
+  .product__hero-size { 
+    height: 18px;
+    margin-bottom: -10px;
+  }
+  .r__inner {
+    width: 90%;
+    margin-left: auto; margin-right: auto;
+  }
+  .product__grid {
+    width: 100%;
+    padding-top: 70px;
+    grid-template-rows: auto auto auto;
+  }
+  .product__hero-l {
+    width: 100%;
+    height: 100vh;
+    grid-column: span 8;
+  }
+  .product__hero-img {
+    width: 80%;
+    height: 95%;
+    margin-top: 2.5%;
+  }
+  .product__hero-scroller {
+    width: 75%;
+  }
+  .product__hero-r {
+    width: 100%;
+    grid-column: span 8;
+    padding: 50px 20px 50px;
+    margin-left: auto; margin-right: auto;
+  }
+  .product__hero-carousel {
+    grid-row-start: 2;
+  }
+  .product__hero-carousel {
+    height: 100px;
+    width: 100%;
+    background: black;
+    grid-column: span 8;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .product__hero-carousel-inner {
+    max-width: calc(90% - 40px);
+    align-items: center;
+    height: 100px;
+  }
+  .carousel-triangle {
+    background: black;
+    margin-top: -35px;
+  }
+  .product__hero-carousel-inner::-webkit-scrollbar {
+    width: 5px;
+    background: rgba(255,255,255,.9);
+    height: 6px;
+  }
+  .product__hero-carousel-inner::-webkit-scrollbar-thumb {
+    background: grey;
+    transform: rotate(-45deg);
+  }
+  .product__hero-carousel-inner {
+    z-index: 3;
+  }
+  .size-guide-pop {
+    position: fixed;
+    width: 90%;
+    top: calc((100vh - 500px) / 2); left: 5%;
+  }
+  .product__desc {
+    padding: 40px 20px;
+  }
+  .product__gar {
+    padding: 40px 20px;
+  }
+}
+@media (max-width: $smallPhone) {
+  .product__hero-img {
+    width: 100%; height: 100%; margin-top: 0;
   }
 }
