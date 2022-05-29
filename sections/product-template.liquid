@@ -18,13 +18,13 @@
   {%- assign first_media = true -%}
 
   {% assign no_stock = true %}
-  <!-- {% for variant in product.variants%}
+  {% for variant in product.variants%}
   {{variant.inventory_quantity}}
   {%if variant.inventory_quantity > 0%}
   {%assign no_stock = false%}
   {%endif%}
-  {%endfor%} -->
-  {%assign no_stock = false%}
+  {%endfor%}
+
 
   <div class="product-header-bg"></div>
   <div class="product__grid">
@@ -71,9 +71,9 @@
             </div>
           </div>
           <input type="text" value="" id="selected_variant" style="width: 1px; height: 1px; visibility:hidden;" />
-          <div {% if no_stock==false %} id="prod-size" {% else %} id="grey-out" {% endif %}
-            class="product__hero-size-btn">
-            <h2>Select Size</h2>
+          <div {% if no_stock==true %} style="border: 1px solid grey; color: grey;" {% endif %} id="prod-size" 
+            class="{% if no_stock==true %} no-stock {%endif%}product__hero-size-btn">
+            <h2 {% if no_stock == true %} style="color: grey;" {%endif%}>Select Size</h2>
             <div id="prod-size-hide">
               <div class="prod-size-flex">
                 {% for variant in product.variants %}

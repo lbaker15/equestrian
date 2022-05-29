@@ -4033,59 +4033,66 @@ window.addEventListener('DOMContentLoaded', () => {
   let shippingSection = document.getElementById('shipping-section');
   let sizeGuide = document.getElementById('size-guide');
   let prodSizeClicked = false
-  prodSize.addEventListener('click', (e) => {
-    if (e.target === prodSizeH2) {
-      let tl = gsap.timeline({ paused: true })
-      tl.fromTo(prodSize, { borderLeft: '2px solid black', borderRight: '2px solid black' }, { borderLeft: '0', borderRight: '0', duration: 0.3, ease: 'easeOut' })
-      tl.fromTo(prodSizeH, { display: 'none', opacity: 0 }, { opacity: 1, display: 'block', duration: 0.3, ease: 'easeOut' })
-      if (!prodSizeClicked) {
-        tl.restart(0)
-        prodSizeClicked = true;
-      } else {
-        tl.reverse()
-        prodSizeClicked = false;
+  if (prodSize) {
+    prodSize.addEventListener('click', (e) => {
+      if (e.target === prodSizeH2) {
+        let tl = gsap.timeline({ paused: true })
+        if (!Array.from(prodSize.classList).find(item => item === 'no-stock')) {
+        tl.fromTo(prodSize, { borderLeft: '2px solid black', borderRight: '2px solid black' }, { borderLeft: '0', borderRight: '0', duration: 0.3, ease: 'easeOut' })
+        } else {
+          tl.fromTo(prodSize, { borderLeft: '1px solid grey', borderRight: '1px solid grey' }, { borderLeft: '0', borderRight: '0', duration: 0.3, ease: 'easeOut' })
+        }
+        tl.fromTo(prodSizeH, { display: 'none', opacity: 0 }, { opacity: 1, display: 'block', duration: 0.3, ease: 'easeOut' })
+        if (!prodSizeClicked) {
+          tl.restart(0)
+          prodSizeClicked = true;
+        } else {
+          tl.reverse()
+          prodSizeClicked = false;
+        }
+      } else if (e.target.id.includes('variant_select')) {
+        let inventory = e.target.dataset.value;
+        let id = String(e.target.id).split('variant_select')[0]
+        selectedV.setAttribute('value', String(id));
+        selectedV.setAttribute('data-value', String(inventory));
       }
-    } else if (e.target.id.includes('variant_select')) {
-      let inventory = e.target.dataset.value;
-      let id = String(e.target.id).split('variant_select')[0]
-      selectedV.setAttribute('value', String(id));
-      selectedV.setAttribute('data-value', String(inventory));
-    }
-  })
+    })
+  }
 
-
-  prodCart.addEventListener('click', () => {
-    //let id = selectedV.value; 
-    let inventory = selectedV.dataset.value;
-    //Check if inventory is enough before request
-    let id = 42959644623077;
-    let quantity = 1;
-    let data = { id, quantity }
-    fetch('/cart/add.js', {
-      body: JSON.stringify(data),
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'xmlhttprequest' /* XMLHttpRequest is ok too, it's case insensitive */
-      },
-      method: 'POST'
-    }).then(function (response) {
-      return response.json();
-    }).then(function (json) {
-      /* we have JSON */
-      if (json) {
-        console.log(json)
-        let add = document.getElementById('add-c')
-        let added = document.getElementById('added-c')
-        console.log(added)
-        add.style.display = 'none';
-        added.style.display = 'flex';
-      }
-    }).catch(function (err) {
-      /* uh oh, we have error. */
-      console.error(err)
-    });
-  })
+  if (prodCart) {
+    prodCart.addEventListener('click', () => {
+      //let id = selectedV.value; 
+      let inventory = selectedV.dataset.value;
+      //Check if inventory is enough before request
+      let id = 42959644623077;
+      let quantity = 1;
+      let data = { id, quantity }
+      fetch('/cart/add.js', {
+        body: JSON.stringify(data),
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'xmlhttprequest' /* XMLHttpRequest is ok too, it's case insensitive */
+        },
+        method: 'POST'
+      }).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        /* we have JSON */
+        if (json) {
+          console.log(json)
+          let add = document.getElementById('add-c')
+          let added = document.getElementById('added-c')
+          console.log(added)
+          add.style.display = 'none';
+          added.style.display = 'flex';
+        }
+      }).catch(function (err) {
+        /* uh oh, we have error. */
+        console.error(err)
+      });
+    })
+  }
 
   let sizePopState = false;
   let popSizeClose = document.getElementById('pop-size-close');
@@ -4123,22 +4130,22 @@ window.addEventListener('DOMContentLoaded', () => {
   let pl = document.getElementById('prod-left');
   let pr = document.getElementById('prod-right');
   let count = 1;
-  gsap.set('.product__hero-carousel-inner', {width: (prodImgCarousel.length * 85) - 25})
+  gsap.set('.product__hero-carousel-inner', { width: (prodImgCarousel.length * 85) - 25 })
   prodImgCarousel.map((item, i) => {
     item.addEventListener('click', (e) => {
       let img = (e.target.querySelector('div').dataset.value);
       prodHeroImg.style.backgroundImage = `url('${img}')`
       let len = prodImgCarousel.length;
       let gap = 100 / len;
-      console.log(len, gap, i+1 * gap)
-      let val = (i === len-1) ? ((i+1) * gap) + 20 :(i+1) * gap
-      gsap.to(scroller, {width: val + '%'})
+      console.log(len, gap, i + 1 * gap)
+      let val = (i === len - 1) ? ((i + 1) * gap) + 20 : (i + 1) * gap
+      gsap.to(scroller, { width: val + '%' })
     })
   })
-  let tlOverlay = gsap.timeline({paused: true})
-  tlOverlay.fromTo(prodHeroImgOverlay, {display: 'none'}, {display: 'flex'})
-  tlOverlay.fromTo(prodHeroImgOverlay, {opacity: 0}, {opacity: 1, duration: 0.3})
-  tlOverlay.fromTo(document.body, {overflowY: 'scroll'}, {overflowY: 'hidden'}, '<')
+  let tlOverlay = gsap.timeline({ paused: true })
+  tlOverlay.fromTo(prodHeroImgOverlay, { display: 'none' }, { display: 'flex' })
+  tlOverlay.fromTo(prodHeroImgOverlay, { opacity: 0 }, { opacity: 1, duration: 0.3 })
+  tlOverlay.fromTo(document.body, { overflowY: 'scroll' }, { overflowY: 'hidden' }, '<')
   let prodImgOverlay = false;
   prodHeroImg.addEventListener('click', () => {
     if (!prodImgOverlay) {
@@ -4152,8 +4159,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   })
   prodHeroImgOut.addEventListener('click', () => {
-      tlOverlay.reverse()
-      prodImgOverlay = false;
+    tlOverlay.reverse()
+    prodImgOverlay = false;
   })
   pl.addEventListener('click', () => {
     let a = Array.from(document.querySelector('.get-imgs').querySelectorAll('img'));
@@ -4161,14 +4168,14 @@ window.addEventListener('DOMContentLoaded', () => {
     if (count === 0) {
       count = a.length;
     }
-    prodHeroImgOut.src = a[count-1].src
+    prodHeroImgOut.src = a[count - 1].src
   })
   pr.addEventListener('click', () => {
     let a = Array.from(document.querySelector('.get-imgs').querySelectorAll('img'));
     count += 1;
-    if (count === a.length+1) {
+    if (count === a.length + 1) {
       count = 1;
     }
-    prodHeroImgOut.src = a[count-1].src
+    prodHeroImgOut.src = a[count - 1].src
   })
 })
