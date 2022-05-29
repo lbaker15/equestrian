@@ -32,6 +32,18 @@
       <div class="product__hero-l">
         <div style="background-image: url('{{product.featured_image.src  | image_url}}');" class="product__hero-img">
         </div>
+        <div class="product__hero-img-overlay">
+          <div class="hidden get-imgs">
+            {% for images in product.images %}
+              <img src="{{images | image_url}}" />
+            {% endfor %}
+          </div>
+          <div class="left" id="prod-left"><</div>
+          <div class="product__hero-img-overlay-img">
+            <img src="{{product.images[0] | image_url}}" />
+          </div>
+          <div class="right" id="prod-right">></div>
+        </div>
         <div class="product__hero-scroller">
           <div class="product__hero-scroller-in"></div>
           <div class="triangle"></div>
@@ -177,7 +189,43 @@
       </div>
     </div>
   </div>
-  <div id="shipping-section" class=""></div>
+  <div id="shipping-section" class="">
+    <div class="shipping__inner">
+      <h2>Shipping & Returns</h2>
+      <hr />
+      <h3>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h3>
+      <div style="width: 100%;" class="grid-12 guarantees__grid">
+
+        <div class="guarantees__item ">
+          <img alt="icon image"
+            src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/delivery.png?v=1652726107" />
+          <h3>free UK delivery</h3>
+        </div>
+        <div class="guarantees__item ">
+          <img alt="icon image" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/28.png?v=1652726018" />
+          <h3>28 day returns</h3>
+        </div>
+        <div class="guarantees__item ">
+          <img alt="icon image" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/box.png?v=1652726075" />
+          <h3>luxury, ethical packaging</h3>
+        </div>
+        <div class="guarantees__item ">
+          <img alt="icon image"
+            src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/hands.png?v=1652726136" />
+          <h3>courier delivery</h3>
+        </div>
+        <div class="guarantees__item ">
+          <img alt="icon image" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/globe.png?v=1652726093" />
+          <h3>world-wide shipping</h3>
+        </div>
+        <div class="guarantees__item ">
+          <img alt="icon image"
+            src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/klarna_logo.png?v=1652726058" />
+          <h3>klarna credit options</h3>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 </div>

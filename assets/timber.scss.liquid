@@ -4560,7 +4560,7 @@ $topPadProd: 15px;
   width: 1000px;
   grid-template-columns: repeat(8, 1fr);
   display: grid;
-  padding-top: $sectionMargin;
+  padding-top: 70px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -4582,7 +4582,41 @@ $topPadProd: 15px;
 .product__hero-img {
   width: 90%; margin-left: auto; margin-right: auto;
   height: 100%;
+  cursor: zoom-in;
   background-size: cover; background-position: 50% 50%;
+}
+.product__hero-img-overlay {
+  width: 100%; height: 100vh;
+  position: fixed; top: 0; left: 0;
+  background: rgba(0, 0, 0,0.5);
+  backdrop-filter: blur(5px);
+  justify-content: space-between;
+  z-index: 100;
+  // display: 'none';
+}
+.hidden {
+  display: none !important;
+}
+.product__hero-img-overlay .left {
+  font-size:60px; color: white; font-family: manrope;
+  display: flex; align-items: center; height: 100%;
+  user-select: none;
+}
+.product__hero-img-overlay-img {
+  width: 500px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex; align-items: center;
+  background: white;
+}
+.product__hero-img-overlay-img img {
+  width: 100%; height: 80%;
+  cursor: zoom-out;
+}
+.product__hero-img-overlay .right {
+  font-size:60px; color: white; font-family: manrope;
+  display: flex; align-items: center; height: 100%;
+  user-select: none;
 }
 .product__hero-scroller {
   position: relative;
@@ -4921,7 +4955,7 @@ $popupWidth: 500px;
 }
 .product__gar {
   width: 100%;
-  padding: $sectionMargin 0;
+  padding: $sectionMargin 0 70px;
   background: black;
   display: flex; flex-direction: column;
   align-items: center;
@@ -4962,7 +4996,7 @@ $popupWidth: 500px;
   display: flex; justify-content: center;
   align-items: center;
   height: auto;
-  padding: 10px 30px;
+  padding: 25px 30px;
   width: 32%; 
 }
 .product__garment-item span {
@@ -4971,12 +5005,57 @@ $popupWidth: 500px;
 .product__garment-item p {
   margin-bottom: 0;
 }
+ 
+#shipping-section {
+  padding: 50px 0px;
+  display: flex; flex-direction: column;
+  justify-content: center;
+}
+.shipping__inner {
+  max-width: 1000px;
+  margin-left: auto; margin-right:auto;
+}
+#shipping-section h2 {
+  font-family: "parisienne";
+  font-size: 46px;
+  text-align: center;
+  margin-bottom: 0;
+}
+#shipping-section hr {
+  background: white; height: 2px; width: 40%;
+  max-width: 160px;
+  margin: 20px auto 25px auto;
+}
+#shipping-section h3 {
+  font-family: montserrat;
+  text-align: center;
+  margin-right: auto; margin-left: auto;
+  font-size: 20px;
+  font-weight: 400;
+}
+.shipping__inner .guarantees__item:nth-child(6) {
+  border-right: none !important;
+}
+.shipping__inner .guarantees__item h3 {
+  text-align: center;
+  padding: 5px 10px;
+}
+.shipping__inner .guarantees__grid {
+  margin-top: 40px;
+}
+@media (max-width: 850px) {
+
+}
 
 
 
 @media (max-width: $laptop) {
   .desc__inner{
     max-width: 800px;
+  }
+  .shipping__inner{
+    max-width: 800px;
+    width: 800px;
   }
   .gar__inner {
     width: 800px;
@@ -5011,6 +5090,10 @@ $popupWidth: 500px;
     margin-left: auto; margin-right: auto;
     width: 90%;
   }
+  .shipping__inner { 
+    margin-left: auto; margin-right: auto;
+    width: 90%;
+  }
 }
 @media (max-width: 769px) {
   .product__grid {
@@ -5034,6 +5117,7 @@ $popupWidth: 500px;
   .product__hero-l {
     width: 100%;
     height: 100vh;
+    background: black;
     grid-column: span 8;
   }
   .product__hero-img {

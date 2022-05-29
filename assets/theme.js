@@ -4117,7 +4117,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let prodImgCarousel = Array.from(document.querySelectorAll('.product__hero-c-img'));
   let prodHeroImg = document.querySelector('.product__hero-img')
+  let prodHeroImgOverlay = document.querySelector('.product__hero-img-overlay')
+  let prodHeroImgOut = document.querySelector('.product__hero-img-overlay-img img')
   let scroller = document.querySelector('.product__hero-scroller-in')
+  let pl = document.getElementById('prod-left');
+  let pr = document.getElementById('prod-right');
+  let count = 1;
   gsap.set('.product__hero-carousel-inner', {width: (prodImgCarousel.length * 85) - 25})
   prodImgCarousel.map((item, i) => {
     item.addEventListener('click', (e) => {
@@ -4129,5 +4134,41 @@ window.addEventListener('DOMContentLoaded', () => {
       let val = (i === len-1) ? ((i+1) * gap) + 20 :(i+1) * gap
       gsap.to(scroller, {width: val + '%'})
     })
+  })
+  let tlOverlay = gsap.timeline({paused: true})
+  tlOverlay.fromTo(prodHeroImgOverlay, {display: 'none'}, {display: 'flex'})
+  tlOverlay.fromTo(prodHeroImgOverlay, {opacity: 0}, {opacity: 1, duration: 0.3})
+  tlOverlay.fromTo(document.body, {overflowY: 'scroll'}, {overflowY: 'hidden'}, '<')
+  let prodImgOverlay = false;
+  prodHeroImg.addEventListener('click', () => {
+    if (!prodImgOverlay) {
+      tlOverlay.restart(0)
+
+      prodImgOverlay = true;
+    } else {
+      tlOverlay.reverse(0)
+
+      prodImgOverlay = false;
+    }
+  })
+  prodHeroImgOut.addEventListener('click', () => {
+      tlOverlay.reverse()
+      prodImgOverlay = false;
+  })
+  pl.addEventListener('click', () => {
+    let a = Array.from(document.querySelector('.get-imgs').querySelectorAll('img'));
+    count -= 1;
+    if (count === 0) {
+      count = a.length;
+    }
+    prodHeroImgOut.src = a[count-1].src
+  })
+  pr.addEventListener('click', () => {
+    let a = Array.from(document.querySelector('.get-imgs').querySelectorAll('img'));
+    count += 1;
+    if (count === a.length+1) {
+      count = 1;
+    }
+    prodHeroImgOut.src = a[count-1].src
   })
 })
