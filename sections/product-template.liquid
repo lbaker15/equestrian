@@ -34,14 +34,12 @@
         <div style="background-image: url('{{product.featured_image.src  | image_url}}');" class="product__hero-img">
         </div>
         <div class="product__hero-img-overlay">
-          <div class="hidden get-imgs">
-            {% for images in product.images %}
-              <img src="{{images | image_url}}" />
-            {% endfor %}
-          </div>
           <div class="left" id="prod-left"><</div>
           <div class="product__hero-img-overlay-img">
-            <img src="{{product.images[0] | image_url}}" />
+            <img
+            width="50%" height="100%" 
+            src="{{product.featured_image.src | img_url: '600x600' }}" 
+            />
           </div>
           <div class="right" id="prod-right">></div>
         </div>
@@ -73,11 +71,11 @@
             </div>
           </div>
           <input type="text" value="" id="selected_variant" style="width: 1px; height: 1px; visibility:hidden;" />
-          <div {% if no_stock==true %} style="border: 1px solid grey; color: grey;" {% endif %} id="prod-size" 
+          <div {% if no_stock==true %} style="border: 1px solid #616161; color: #616161;" {% endif %} id="prod-size" 
             class="{% if no_stock==true %} no-stock {%endif%}product__hero-size-btn">
-            <h2 {% if no_stock == true %} style="color: grey;" {%endif%}>Select Size</h2>
+            <h2 {% if no_stock == true %} style="color: #616161;" {%endif%}>Select Size</h2>
             <div id="prod-size-hide">
-              <div class="prod-size-flex">
+              <div class="prod-size-flex"> 
                 {% for variant in product.variants %}
                 <div class="flex-col">
                   {% if variant.inventory_quantity == 0 %}
@@ -208,29 +206,29 @@
       <div style="width: 100%;" class="grid-12 guarantees__grid">
 
         <div class="guarantees__item ">
-          <img alt="icon image"
+          <img width="100" height="50" alt="icon image"
             src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/delivery.png?v=1652726107" />
           <h3>free UK delivery</h3>
         </div>
         <div class="guarantees__item ">
-          <img alt="icon image" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/28.png?v=1652726018" />
+          <img width="100" height="50" alt="icon image" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/28.png?v=1652726018" />
           <h3>28 day returns</h3>
         </div>
         <div class="guarantees__item ">
-          <img alt="icon image" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/box.png?v=1652726075" />
+          <img width="100" height="50" alt="icon image" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/box.png?v=1652726075" />
           <h3>luxury, ethical packaging</h3>
         </div>
         <div class="guarantees__item ">
-          <img alt="icon image"
+          <img width="100" height="50" alt="icon image"
             src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/hands.png?v=1652726136" />
           <h3>courier delivery</h3>
         </div>
         <div class="guarantees__item ">
-          <img alt="icon image" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/globe.png?v=1652726093" />
+          <img width="100" height="50" alt="icon image" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/globe.png?v=1652726093" />
           <h3>world-wide shipping</h3>
         </div>
         <div class="guarantees__item ">
-          <img alt="icon image"
+          <img width="100" height="50" alt="icon image"
             src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/klarna_logo.png?v=1652726058" />
           <h3>klarna credit options</h3>
         </div>
@@ -241,14 +239,14 @@
 
 
 </div>
-{% unless product == empty %}
-<script type="application/json" id="ProductJson-{{ section.id }}">
+<!-- {% unless product == empty %}
+<script type="application/json" id="ProductJsofn-{{ section.id }}">
     {{ product | json }}
   </script>
 <script type="application/json" id="ModelJson-{{ section.id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
   </script>
-{% endunless %}
+{% endunless %} -->
 
 
 

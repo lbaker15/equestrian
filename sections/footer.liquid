@@ -38,11 +38,13 @@
   </div>
   <div class="footer__payment">
     <h2>Payment Options</h2>
+    <ul>
     {%- for type in shop.enabled_payment_types -%}
     <li>
       {{ type | payment_type_svg_tag: class: 'icon' }}
     </li>
     {%- endfor -%}
+    </ul>
   </div>
   <div class="footer__copyright">
     © 2022 Asur Equestrian Ltd
