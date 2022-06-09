@@ -9,15 +9,23 @@
 <section class="grid-12 hero_2">
   <!-- Hero Slider-->
   <div class="hero__img">
-    <div style="opacity: {{opacity}}; {% if section.settings.image-overlay-display == 'true' %} display: none; {% else %} display: block; {% endif %}" class="hero__img_2">
+    <div
+      style="opacity: {{opacity}}; {% if section.settings.image-overlay-display == 'true' %} display: none; {% else %} display: block; {% endif %}"
+      class="hero__img_2">
     </div>
     <div style="background-image: url('{{section.settings.image | image_url }}');" class="hero__img-inner"></div>
   </div>
   <div class="hero__text   hero__text-{{section.settings.text-position}}">
     <div style="
-    width: calc(100vw - ({{section.settings.text-margin}} * 2));
+    padding: 0 {{section.settings.text-margin}}px;
     text-align: {{section.settings.text-alignment}}; align-items: {{alignment}}" class="hero__text-mw">
-      <h2 style="color: {{section.settings.text-color}}">{{section.settings.heading-1}}</h2>
+      <h2 style="color: {{section.settings.text-color}}">
+        {% if section.settings.heading-1 == "British Equestrian Wear" %}
+        British <div>Equestrian Wear</div>
+        {% else %}
+        {{section.settings.heading-1}}
+        {% endif %}
+      </h2>
       <h3 style="color: {{section.settings.text-color}}">{{section.settings.heading-2}}</h3>
       <div class="hero__btn">
         {% render "swipe-btn" %}
@@ -59,6 +67,12 @@
 "type": "color",
 "label": "CTA Background Colour",
 "default": "#000"
+},
+{
+"id": "cta-background-transparent",
+"type": "checkbox",
+"label": "CTA Background Transparent",
+"default": true
 },
 {
 "id": "cta-border-color",

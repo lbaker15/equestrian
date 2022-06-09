@@ -34,6 +34,7 @@
         <div style="background-image: url('{{product.featured_image.src  | image_url}}');" class="product__hero-img">
         </div>
         <div class="product__hero-img-overlay">
+          <div class="product__hero-img-overlay-x"><div>X</div></div>
           <div class="left" id="prod-left"><</div>
           <div class="product__hero-img-overlay-img">
             <img
@@ -78,9 +79,7 @@
               <div class="prod-size-flex"> 
                 {% for variant in product.variants %}
                 <div class="flex-col">
-                  {% if variant.inventory_quantity == 0 %}
-                  <p>Out of size</p>
-                  {% endif %}
+  
                   <div class="prod-size-box" {% if variant.inventory_quantity==0 %} id="ps-no-stock" {% endif %}>
                     <hr />
                     <hr />
@@ -179,7 +178,7 @@
   </div>
   <div id="gar-care-section" class="product__gar">
     <div class="gar__inner">
-      <h2>Garmet care</h2>
+      <h2>Garmet Care</h2>
       <hr />
       <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
       <div class="product__garment-list">
@@ -202,7 +201,7 @@
     <div class="shipping__inner">
       <h2>Shipping & Returns</h2>
       <hr />
-      <h3>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h3>
+      <h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h4>
       <div style="width: 100%;" class="grid-12 guarantees__grid">
 
         <div class="guarantees__item ">

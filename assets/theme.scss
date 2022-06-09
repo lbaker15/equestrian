@@ -413,9 +413,54 @@ $passwordPageUseBgImage: true;
 $color-blankstate: rgba($colorTextBody, 0.35);
 $color-blankstate-background: rgba($colorTextBody, 0.10);
 
+/*================ Typography ================*/@font-face {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n6.7a3c341961dc23aaabcc116124b80f2a7abec1a2.woff2?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=ae69c5e4e2af07a5261b75fe7a7a36f3f2c85cec1d0e6d2b5e76691b09c44385") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_n6.2c97c1a692c63ad09ab0635cb73b1939c5f417c0.woff?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=c58e3836bbdb5c4a38a580af11108c88bbc82d8b3f2011645bbb75c83352f201") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n4.1d581f6d4bf1a97f4cbc0b88b933bc136d38d178.woff2?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=fc8122e89c30b519429bb75b95539c93a9532c4efe616ade916eed3316624c19") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_n4.cfce41a967758ce5a9b7d48daeb5b028fd977a9b.woff?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=c192483073b7e2fa95bb4905fe68e23b01606d0e9b4378b084fafe136cfa4c27") format("woff");
+}
 
 
+@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n7.c496e9cf2031deec4c4bca338faa81971c8631d4.woff2?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=ebefdbad315ca6c80cdfd869759a7e344780f0906ff437fddeb8c4a8cf9b51e3") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_n7.78b0223375c94b39ce1af7e09a0225f2bb3d05f7.woff?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=05a254514641d44bbbf763f9eb7a15362b7f79301ce3500058780c375eb2972d") format("woff");
+}
 
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_i4.ae02483b3d5e8777d0d4a4ccf396482c364d8955.woff2?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=8b17cb0b8c02bad9908f79935e80d2fdb143bbeb7da5e00885ea85de4038fbd8") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_i4.ba28d1a04ec09448de486d83c63235903dfc0af8.woff?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=b3a83bf6d6f0a1740ef20a0d9ab4b1e403996a8091774c8da83e38e99e884580") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_i7.83866c3eec90071fa974c17980ffb42977f9e667.woff2?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=c74dabd4c636b17478036216a3b4f45f5c99fb33ca89131f3974cd6636d4228d") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_i7.25524241b12d864609c85325613d60efcf1a87e3.woff?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=ac34c72d491236934a60e80602933a5adfd3163b080c0712305d294ced75fa8d") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 900;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n9.ddaed62de62f3d3d87e64f4d0463dca05fc9c8e4.woff2?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=be1aa5b14a1ea949ea01ed6fbb67a8ffaed47d0655ddc79b4a62867b0aed268d") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_n9.85cc5f32e331fc9b3a109639b08869c64782e161.woff?h1=YXN1ci1lcXVlc3RyaWFuLmNvLnVr&h2=YXN1ci1lcXVlc3RyaWFuLmNvbQ&hmac=72adbd961d2a03a83e91e8134eb5ff63848fc5497d152f30b76eb42cfaa98f78") format("woff");
+}
 
 
 // Header Font
@@ -436,14 +481,14 @@ $accentFontStack: Montserrat, sans-serif;
 $accentFontWeight: 600;
 $accentFontWeightBold: 900;
 $accentFontStyle: normal;
- 
+
 @font-face {
   font-family: 'icons';
-  src: url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/icons.eot?v=11298153234806265256');
-  src: url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/icons.eot?v=11298153234806265256#iefix') format("embedded-opentype"),
-       url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/icons.woff?v=2408938297684835138') format("woff"),
-       url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/icons.ttf?v=17785143920645075297') format("truetype"),
-       url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/icons.svg?v=18275316767451022369#timber-icons') format("svg");
+  src: url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/icons.eot?v=112981532348062652561652259641');
+  src: url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/icons.eot?v=112981532348062652561652259641#iefix') format("embedded-opentype"),
+       url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/icons.woff?v=24089382976848351381652259644') format("woff"),
+       url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/icons.ttf?v=177851439206450752971652259643') format("truetype"),
+       url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/icons.svg?v=182753167674510223691652259642#timber-icons') format("svg");
   font-weight: normal;
   font-style: normal;
 };
@@ -2374,7 +2419,7 @@ $slick-dot-character: '\2022';
 
 // Only called once so make sure proper file is grabbed
 @function slick-image-url($url) {
-  @return url(//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/ajax-loader.gif?v=4135686330247201572);
+  @return url(//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/ajax-loader.gif?v=41356863302472015721652259639);
 }
 
 // Unused intentionally
@@ -3976,7 +4021,7 @@ $disclosure-list-large: 1100px;
 
   background: {
     color: $colorInputBg;
-    image: url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/ico-select.svg?434');
+    image: url('//cdn.shopify.com/s/files/1/0629/7888/3813/t/9/assets/ico-select.svg?v=178275816164995464951652259656');
     position: right 10px center;
     repeat: no-repeat;
   }
