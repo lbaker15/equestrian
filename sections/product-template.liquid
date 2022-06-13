@@ -152,12 +152,14 @@
           <div class="product-hero__carousel-l"><</div>
           {% endif %}
           <div class="product__hero-carousel-inner">
-            {% for images in product.images %}
-            <div class="product__hero-c-img">
-              <div data-value="{{images | image_url}}" style="background-image: url('{{images | image_url }}')">
+            <!-- <div class="product__hero-carousel-move"> -->
+              {% for images in product.images %}
+              <div class="product__hero-c-img">
+                <div data-value="{{images | image_url}}" style="background-image: url('{{images | image_url }}')">
+                </div>
               </div>
-            </div>
-            {% endfor %}
+              {% endfor %}
+            <!-- </div> -->
           </div>
           {% if product.images.size > 9 %}
           <div class="product-hero__carousel-r">></div>
@@ -174,6 +176,9 @@
       <h2>Product Details</h2>
       <hr />
       <p>{{product.description}}</p>
+      <div class="img">
+        <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/details.jpg?v=1653991886" />
+      </div>
     </div>
   </div>
   <div id="gar-care-section" class="product__gar">

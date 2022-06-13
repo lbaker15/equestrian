@@ -114,7 +114,7 @@ Loop through each collection, except 'frontpage'.
             style="background-image: url('{{img | image_url}}')" {% endif %} class="collection__img"></div>
           <div class="images">
             {% for image in product.images %}
-            {% if forloop.index < 5 %} <div style="background-image: url('{{image | image_url}}')"
+            {% if forloop.index < 4 %} <div style="background-image: url('{{image | image_url}}')"
               class="collection__img-s">
           </div>
           {% endif %}

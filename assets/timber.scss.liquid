@@ -4404,13 +4404,101 @@ button.mphus-icon__wrapper{padding:0}
 .header__menu-list {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100vh;
-  background: black;
+  background: rgba(255,255,255,0.9);
   transform: translateX(-100vw);
   transition: all 0.5s ease-out !important;
+  max-width: 550px;
 }
-
-
-
+@media (max-width: $tablet) {
+  .header__menu-list {
+    max-width: 400px;
+  }
+}
+@media (max-width: $smallPhone) {
+  .header__menu-list {
+    max-width: 320px;
+  }
+  .collection__col .line hr {
+    width: auto !important;
+  }
+}
+.header__menu-inner {
+  display: flex;
+  flex-direction: row;
+}
+.header__menu-parents {
+  width: 100%; height: auto;
+  margin-top: 75px;
+  color: black;
+  padding: 50px 5vw;
+  order: 0;
+  display: flex; 
+  flex-direction: column;
+}
+.header__menu-children {
+  display: none; width: 100%; height: auto;
+  margin-top: 75px;
+  order: 1;
+  color: black;
+  padding: 50px 5vw;
+  flex-direction: column;
+}
+.header__children {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+}
+.child-active {
+  display: flex;
+}
+.header__child {
+  font-family: roboto;
+  font-size: 20px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  font-weight: 400;
+  padding: 16px 0px;
+}
+.header__item {
+  font-family: roboto;
+  font-size: 20px;
+  border-bottom: 1px solid black;
+  font-weight: 400;
+  padding: 16px 0px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  gap: 10px;
+}
+.header__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.header__title #html {
+  width: 100%; text-align: center;
+  font-weight: 600;
+  margin-left: -20px;
+  pointer-events: none;
+}
+#header-back button {
+  background: transparent;
+  border: none; outline: none;
+}
+.header__title img {
+  max-height: 15px;
+}
+.header__item:hover {
+  font-weight: 600;
+}
+.header__item:hover img {
+  opacity: 1;
+}
+.header__item img {
+  max-height: 15px;
+  opacity: 0.6;
+}
 footer {
   background: black;
 }
@@ -4748,6 +4836,7 @@ $topPadProd: 15px;
   font-size:60px; color: white; font-family: manrope;
   display: flex; align-items: center; height: 100%;
   user-select: none;
+  cursor: pointer;
 }
 .product__hero-img-overlay-img {
   width: 500px;
@@ -4765,13 +4854,14 @@ $topPadProd: 15px;
   font-size:60px; color: white; font-family: manrope;
   display: flex; align-items: center; height: 100%;
   user-select: none;
+  cursor: pointer;
 }
 .product__hero-scroller {
   position: relative;
   width: 85%;
-  height: 20px;
-  background: grey;
-  margin-top: -27px;
+  height: 16px;
+  background: #fafafa;
+  margin-top: -35px;
   margin-right: auto;
   margin-left: auto;
   overflow: hidden;
@@ -5084,20 +5174,31 @@ $popupWidth: 500px;
   margin-left: auto;
   z-index: 2;
 }
-
+$prodHeroImgHeight: 60px;
+$padBtmCImg: 4px;
+$theLine: 5px;
 .product__hero-carousel-inner {
   display: flex; justify-content: flex-start;
   gap: 20px;
   height: 70px;
   scroll-snap-type: x mandatory;
-  overflow-x: auto;
+  overflow-x: scroll;
   margin-left: auto; margin-right: auto;
   position: relative;
   z-index: 10;
 }
+.img-active {
+  border-bottom: $theLine solid black;
+  height: $prodHeroImgHeight + $padBtmCImg + $theLine !important;
+  padding-bottom: $padBtmCImg;
+}
+// .product__hero-carousel-move {
+//   display: flex; justify-content: flex-start;
+//   gap: 20px;
+//   width: auto; height: 100%;
+// }
 .product__hero-c-img {
-  width: 60px; height: 60px;
-  background:red;
+  width: 60px; height: $prodHeroImgHeight;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
   z-index: 3;
@@ -5145,11 +5246,16 @@ $popupWidth: 500px;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
-.desc__inner img {
+.desc__inner .img {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
+  display: flex; justify-content: center;
   height: auto;
-  margin: 20px 0px 0px; 
+  background: white;
+  margin: 0px 0px 20px; 
+}
+.desc__inner .img img {
+  margin-left: auto; margin-right: auto;
 }
 .product__desc h2 {
   font-family: "parisienne";
@@ -5446,7 +5552,6 @@ $popupWidth: 500px;
     display: none;
   }
   .carousel-triangle {
-    margin-top: -2px;
     background: black;
   }
   .product__hero-carousel-inner::-webkit-scrollbar {
@@ -5496,7 +5601,6 @@ $popupWidth: 500px;
     margin-top: 25px;
   }
   .carousel-triangle {
-    margin-top: 2px;
     width: 40px;
     height: 40px;
   }
@@ -5750,5 +5854,10 @@ $collectionPad: 25px;
   .images {
     margin-left: calc((90% - 350px) / 2 - 20px);
     margin-top: -430px;
+  }
+}
+@media (max-width: 768px) {
+  .collection__grid {
+    margin-top: 45px !important;
   }
 }
