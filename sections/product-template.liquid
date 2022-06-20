@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="product__hero-r">
-        <a class="product__hero-link" href="/collections/first-edition"><span>  <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-back.png?v=1655131392" />  </span>back to previous page </a>
+        <a class="product__hero-link" href="/collections/first-edition"><span>  <img class="m-h-15" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-back.png?v=1655131392" />  </span>back to previous page </a>
         <div class="r__inner">
           <h2 class="title">{{product.title}}</h2>
           <div class="product__hero-price">
@@ -73,7 +73,9 @@
               </div>
             </div>
           </div>
+          <!-- SELECTED VARIANT -->
           <input type="text" value="" id="selected_variant" style="width: 1px; height: 1px; visibility:hidden;" />
+          <!-- END  -->
           <div {% if no_stock==true %} style="border: 1px solid #616161; color: #616161;" {% endif %} id="prod-size" 
             class="{% if no_stock==true %} no-stock {%endif%}product__hero-size-btn">
             <h2 {% if no_stock == true %} style="color: #616161;" {%endif%}>Select Size</h2>
@@ -83,15 +85,17 @@
                 <div class="flex-col">
   
                   <div class="prod-size-box" {% if variant.inventory_quantity==0 %} id="ps-no-stock" {% endif %}>
+                    {% if variant.inventory_quantity == 0 %}
                     <hr />
-                    <hr />
+                    <hr /> 
+                    {% endif %}
                     {% if variant.inventory_quantity != 0 %}
                     <div class="input-group">
                       <span style="
                     background: white;
                     box-shadow: inset 0 0 0 1px black;" class="input-group-btn {{class}}">
                         <input data-value="{{variant.inventory_quantity}}" id="{{variant.id}} variant_select"
-                          value="{{variant.title}}" style="white-space:nowrap;text-transform:uppercase" type="submit"
+                          value="{{variant.title}}" style="white-space:nowrap;text-transform:uppercase;line-height:0;font-size:18px;" type="submit"
                           class="btn__mine">
                       </span>
                     </div>
@@ -243,7 +247,7 @@
           <h3>klarna credit options</h3>
         </div>
       </div>
-      <a href="/collections/first-edition"><span> <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-back.png?v=1655131392" /> </span>back to previous page </a>
+      <a href="/collections/first-edition"><span> <img class="m-h-15" src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-back.png?v=1655131392" /> </span>back to previous page </a>
     </div>
   </div>
 

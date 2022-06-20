@@ -26,7 +26,7 @@ Loop through each collection, except 'frontpage'.
     <div class="collection__header">
       <a class="product__grid-link" href="/products">
         <span>
-          <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-back.png?v=1655131392" /> 
+          <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-back.png?v=1655131392" />
         </span>back to previous page
       </a>
       <h1>First Edition Collection</h1>
@@ -42,51 +42,58 @@ Loop through each collection, except 'frontpage'.
 
     {% assign includedTag = "" %}
     {% for tag in current_tags %}
-      {%assign includedTag = includedTag | append: ',' | append: tag %}
+    {%assign includedTag = includedTag | append: ',' | append: tag %}
     {% endfor %}
     {% assign includedTag = includedTag | remove_first: ',' | split: ',' %}
 
     <div class="collection__filter">
       <div class="collection__f-left">
-        <button class="filter__open br">Category</button>
+       <div class="collection__f-left-in">
+        <button class="filter__open br">Category <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/v_copy_3.png?v=1655379685" /></button>
         <div class="filter__options">
           {% for tag in all_tags %}
-          {% if tag == 'Womens' or tag == 'womens' %}
+          {% if tag == 'Womens' or tag == 'womens' or tag == 'Mens' or tag == 'mens' %}
           <div class="filter__option
           {% if includedTag contains tag %}
             filter__option--active
           {% endif %}
           " data-value="{{tag}}">
-          {% if includedTag contains tag %}
+            {% if includedTag contains tag %}
             {{tag | link_to_remove_tag: tag}}
-          {% else %}
+            {% else %}
             {{tag | link_to_add_tag: tag}}
-          {% endif %}
+            {% endif %}
           </div>
           {% endif %}
           {% endfor %}
+        </div>
         </div>
       </div>
       <div class="collection__f-right">
-        <button class="filter__open">Garment</button>
+        <div class="collection__f-right-in">
+        <button class="filter__open">
+          Garment 
+          <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/v_copy_3.png?v=1655379685" />
+        </button>
         <div class="filter__options">
           {% for tag in all_tags %}
-          {% if tag != 'Womens' and tag != 'womens' %}
+          {% if tag != 'Womens' and tag != 'womens' and tag != 'Mens' and tag != 'mens' %}
           <div class="filter__option
           {% if includedTag contains tag %}
             filter__option--active
           {% endif %}
           " data-value="{{tag}}">
-          {% if includedTag contains tag %}
+            {% if includedTag contains tag %}
             {{tag | link_to_remove_tag: tag}}
-          {% else %}
+            {% else %}
             {{tag | link_to_add_tag: tag}}
-          {% endif %}
+            {% endif %}
           </div>
           {% endif %}
           {% endfor %}
         </div>
       </div>
+      </div> 
     </div>
 
 
@@ -115,18 +122,23 @@ Loop through each collection, except 'frontpage'.
             style="background-image: url('{{img | image_url}}')" {% endif %} class="collection__img"></div>
           <div class="images">
             {% for image in product.images %}
-            {% if forloop.index < 4 %} <div style="background-image: url('{{image | image_url}}')"
-              class="collection__img-s">
-          </div>
-          {% endif %}
-          {% endfor %}
+              {% if forloop.index < 3 %} 
+              <div style="background-image: url('{{image | image_url}}')"
+                class="collection__img-s">
+              </div>
+              {% endif %}
+            {% endfor %}
         </div>
       </div>
-      <div class="inner">
+      <div class="inner second-inner">
         <div class="collection__text">
-          <h3><span>First edition</span></h3>
-          <h4><a href="{{product.url}}">{{product.title}}</a> <em>|</em> <span>{{product.price | money}}</span></h4>
-          <img src="{{ img2 | img_url }}" />
+          <div class="collection__txt">
+            <h3><span>First edition</span></h3>
+            <h4><a href="{{product.url}}">{{product.title}}</a> <em>|</em> <span>{{product.price | money}}</span></h4>
+          </div>
+          <div class="collection__image">
+            <img src="{{ img2 | img_url }}" />
+          </div>
         </div>
       </div>
       <div class="line">

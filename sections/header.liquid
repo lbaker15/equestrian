@@ -5,51 +5,64 @@
         <div class="header__child header__title">
           <span id="header-back">
             <button>
-            <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-back.png?v=1655131392" />
-          </button>
+              <img
+                src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-back.png?v=1655131392" />
+            </button>
           </span>
-            <span id="html"></span>
+          <span id="html"></span>
         </div>
         {% for link in linklists.header-menu.links %}
-          {% if link.links.size > 0 %}
-              <div data-value="{{forloop.index}}" class="header__children">
-                  {% for child in link.links %}
-                  <div class="header__child">
-                    <a href="{{child.url}}">
-                      {{child.title}}
-                    </a>
-                  </div>
-                {% endfor %}
-              </div>
-          {% endif %}
+        {% if link.links.size > 0 %}
+        <div data-value="{{forloop.index}}" class="header__children">
+          {% for child in link.links %}
+          <div class="header__child">
+            <a href="{{child.url}}">
+              {{child.title}}
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
         {% endfor %}
       </div>
       <div class="header__menu-parents">
-      {% for link in linklists.header-menu.links %}
-      <div data-id="{{link.title}}" data-value="{{forloop.index}}" class="header__item header__parent">
+        {% for link in linklists.header-menu.links %}
+        <div data-id="{{link.title}}" data-value="{{forloop.index}}" class="header__item header__parent">
 
-        {{link.title}}
-        {% if link.links.size > 0 %}
-        <img style="pointer-events: none;"
-          src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-arrow.png?v=1655128564" />
-        {% endif %}
-
-
-      </div>
-      {% endfor %}
-      <div class="header__item header__parent">
-        <a href="/collections/first-edition">
-          Shop All 
-        </a>
-        <img
+          {{link.title}}
+          {% if link.links.size > 0 %}
+          <img style="pointer-events: none;"
             src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-arrow.png?v=1655128564" />
+          {% endif %}
+
+
+        </div>
+        {% endfor %}
+        <div data-value="shop_all" class="header__parent">
+          <a href="/collections/first-edition">
+            Shop All
+            <img
+            class="ml-gap"
+            src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/Vector_Smart_Object-arrow.png?v=1655128564" />
+          </a>
+         
+        </div>
       </div>
-      </div>
+
+    </div>
+    <div class="header__edition">
+      <a class=" edition__item" href="{{section.settings.link}}">
+        <div class="img"
+          style="background-image: url('{{section.settings.image | image_url }}'); background-size: cover; background-position: 50% 50%;">
+        </div>
+        <div class="edition__item-title">
+          <span>{{section.settings.text}} </span>
+        </div>
+      </a>
     </div>
   </div>
   <div class="header__inner">
     <div class="header__menu">
-      <!-- <img src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/BURGER.png?v=1652728975" /> -->
       <button class="mphus-icon__wrapper js-drawer-open-button-left" aria-label="NavDrawer">
         <div class="mphus-burger">
           <span class="mphus-burger__line mphus-burger--top"></span>
@@ -66,14 +79,14 @@
           src="https://cdn.shopify.com/s/files/1/0629/7888/3813/files/HEADER_LOGO.png?v=1652728919" />
       </a>
     </div>
-    <div class="header__cart">
+    <a href="/cart" class="header__cart">
       {% if cart.item_count > 0 %}
       <img width="35" height="35" src="{{section.settings.bag-full|image_url}}" />
       <div class="header__cart-count">{{cart.item_count}}</div>
       {% else %}
       <img width="50" height="50" src="{{section.settings.bag-empty|image_url}}" />
       {% endif %}
-    </div>
+    </a>
   </div>
 </div>
 
@@ -91,7 +104,22 @@
 "id": "bag-full",
 "type": "image_picker",
 "label": "Shopping bag full colour"
-}
+},
+{
+  "type": "image_picker",
+  "id": "image",
+  "label": "Menu Image"
+  },
+  {
+  "type": "text",
+  "id": "text",
+  "label": "Menu Image Text"
+  },
+  {
+  "type": "url",
+  "id": "link",
+  "label": "Menu Image Link"
+  }
 ]
 }
 {% endschema %}

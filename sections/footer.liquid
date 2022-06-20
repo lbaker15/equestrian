@@ -49,9 +49,11 @@
     <div class="footer__links">
       {% assign size = linklists.footer.links.size %}
       {% for link in linklists.footer.links %}
-      <div class="footer__links-item
-    {% if size > 6 %} three-col {% elsif size > 3 and size < 7 %} two-col {% else %} one-col {% endif %}
-    ">
+      {% if forloop.index > 6 %} {% assign col = 9 %} {% elsif forloop.index > 3 and forloop.index < 7 %} {% assign col = 5 %} {% else %} {% assign col = 1 %} {% endif %}
+      {% if forloop.index == 1 or forloop.index == 4 or forloop.index == 7 %} {%assign row = 1%} {%elsif forloop.index == 2 or forloop.index == 5 or forloop.index == 8 %} {%assign row = 2%} {%else%} {%assign row=3%} {%endif%}
+      <div 
+      style="grid-column: {{col}} / span {{4}}; grid-row: {{row}} / span 1;"
+      class="footer__links-item">
         <a href="{{link.url}}">
           {% if link.title == 'My Account' %}
           <img class="footer__horse" alt="My account icon"
