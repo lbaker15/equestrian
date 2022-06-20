@@ -127,10 +127,8 @@ Loop through each collection, except 'frontpage'.
         {% assign tag = tagUp | downcase %}
         {% assign tag2 = tag | prepend: "," %}
         {% if list1 contains tag2 %} 
-
           {% assign list1match = true %}
         {% elsif list2 contains tag2 %}
-
           {% assign list2match = true %}
         {% endif %}
       {% endfor %}
