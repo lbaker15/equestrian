@@ -107,15 +107,45 @@ Loop through each collection, except 'frontpage'.
       <!-- {% assign lowercaseTagsProd = product.tags | join: ',' | downcase | split: ',' %}
       {% assign lowercaseTagsCurrent = current_tags | join: ',' | downcase | split: ',' %} -->
       {% assign included = "" %}
+      {% assign list1 = "" %}
+      {% assign list2 = "" %}
+      {% assign list1match = false %}
+      {% assign list2match = false %}
 
       {% for tag in current_tags %}
-      {% if product.tags contains tag %}
-      {%assign included = included | append: ',' | append: tag %}
-      {% endif %}
+        {% assign lcTag = tag | downcase %}
+        {% assign tag2 = lcTag | prepend: "," %}
+        {% if lcTag == "mens" or lcTag == "womens" %}
+          {% assign list1 = list1 | append: tag2 %}
+        {% else %}
+          {% assign list2 = list2 | append: tag2 %} 
+        {% endif %}
       {% endfor %}
-      {% assign included = included | remove_first: ',' | split: ',' %}
 
-      {% if included.size == current_tags.size or current_tags == null %}
+      <!-- List 1 is containing mens as womens so check the space before mens -->
+      {% for tagUp in product.tags %}
+        {% assign tag = tagUp | downcase %}
+        {% assign tag2 = tag | prepend: "," %}
+        {% if list1 contains tag2 %} 
+
+          {% assign list1match = true %}
+        {% elsif list2 contains tag2 %}
+
+          {% assign list2match = true %}
+        {% endif %}
+      {% endfor %}
+
+
+      {% assign included = false %}
+      {% if list1.size > 0 and list2.size > 0 and list1match and list2match %}
+        {% assign included = true %}
+      {% elsif list1.size > 0 and list2.size == 0 and list1match%}
+        {% assign included = true %}
+      {% elsif list2.size > 0 and list1.size == 0 and list2match%}
+        {% assign included = true %}
+      {% endif %}
+
+      {% if included == true or current_tags == null %}
       <div class="collection__col col-{{forloop.index}}">
         <div class="first-inner inner">
           <div {% assign img=product.featured_image %} {% assign img2=product.images[1] %} {% if img %}
